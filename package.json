@@ -1,0 +1,34 @@
+{
+  "name": "array-merge-by-id",
+  "version": "1.0.0",
+  "description": "array merging and comparing",
+  "main": "index.js",
+  "scripts": {
+    "prod": "webpack -p",
+    "dev": "webpack --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://knee-cola.github.com/array-merge-by-id"
+  },
+  "keywords": [
+    "array",
+    "merge",
+    "diff"
+  ],
+  "author": "knee-cola <nikola.derezic@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "@types/lodash": "^4.14.87",
+    "babel-loader": "^8.0.0-beta.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "ts-loader": "^3.1.1",
+    "typescript": "^2.6.1",
+    "webpack": "^3.8.1"
+  }
+}
