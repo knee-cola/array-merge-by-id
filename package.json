@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prod": "webpack -p",
-    "dev": "webpack --verbose"
+    "dev": "webpack --verbose",
+    "test": "jest",
+    "testw": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -24,9 +26,12 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.32",
     "@babel/preset-env": "^7.0.0-beta.32",
+    "@types/jest": "^21.1.8",
     "@types/lodash": "^4.14.87",
     "babel-loader": "^8.0.0-beta.0",
     "clean-webpack-plugin": "^0.1.17",
+    "jest": "^21.2.1",
+    "ts-jest": "^21.2.4",
     "ts-loader": "^3.1.1",
     "typescript": "^2.6.1",
     "webpack": "^3.8.1"

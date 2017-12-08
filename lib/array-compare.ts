@@ -3,7 +3,7 @@ import { ArrayDiffResult, ArrayDiffConfig, CompareBy, ComparerFn, CallbackFn } f
 import { sortOn } from './simple-methods';
 import compileComparer from './comparer-compiler';
 
-const _undef = void 0;
+const _undef:any = void 0;
 
 /**
  * Compares elements of two arrays and returns an object containing common elements and differences.
@@ -18,7 +18,7 @@ const _undef = void 0;
  *              totally different objects, which only share key values
  * 
  */
-const compareA = <T,K>(leftA:Array<T>, rightA:Array<K>, key_columns:CompareBy, {unique=false,skipSort=false,sortLeftBy,sortRightBy,linkName,mapName,callbackFn=null}:ArrayDiffConfig):ArrayDiffResult<T,K> => {
+const compareA = <T,K>(leftA:Array<T>, rightA:Array<K>, key_columns:CompareBy, {unique=false,skipSort=false,sortLeftBy,sortRightBy,linkName,mapName,callbackFn=null}:ArrayDiffConfig={}):ArrayDiffResult<T,K> => {
 
     let leftDiff:Array<T>=[],
         leftCommon:Array<T>=[],
@@ -48,7 +48,7 @@ const compareA = <T,K>(leftA:Array<T>, rightA:Array<K>, key_columns:CompareBy, {
         }
 
         if(sortRightBy !== null) {
-            sortRightBy = defaultTo(sortLeftBy, comparerFn);
+            sortRightBy = defaultTo(sortRightBy, comparerFn);
             sortOn(rightA, sortRightBy); // IF sorting is not set in config - use `key_columns` for sorting
         }
     }
@@ -57,8 +57,8 @@ const compareA = <T,K>(leftA:Array<T>, rightA:Array<K>, key_columns:CompareBy, {
         right_max:number = rightA.length,
         continueFrom:number=0,
         match_found:boolean,
-        left_el:T,
-        right_el:K,
+        left_el:any,
+        right_el:any,
         mapA:Array<K>=null;
 
     // iterate over first array

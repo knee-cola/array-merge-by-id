@@ -1,12 +1,20 @@
 {
     "compilerOptions": {
-        "target": "es2015",
+        "noImplicitAny": true,
+        // module resolution strategy ('node','classic')
         "moduleResolution": "node",
+        //  ECMAScript target version ('ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT')
+        "target": "ESNEXT",
+        // module code generation ('commonjs', 'amd', 'system', 'umd' or 'es2015')
+        "module": "commonjs",
+        // create declaration files in output folder
         "declaration": true,
         "declarationDir": "./"
     },
     "exclude": [
         "node_modules",
-        "dist"
+        "dist",
+        "test",
+        "__mocks__"
     ]
 }  
