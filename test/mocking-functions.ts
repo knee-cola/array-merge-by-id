@@ -1,13 +1,11 @@
-/* spell-checker: disable */
 import { originalArr } from './test-data';
 
-function mockShuffledA() {
+function mockShuffledA(shuffledPos:Array<number> = [7, 29, 28, 9, 11, 5, 10, 8, 27, 4, 3, 26, 20, 25, 6, 15, 1, 21, 0, 18, 19, 22, 14, 23, 13, 24, 16, 2, 17, 12]):Array<any> {
 
     // elementi su pomiješani kako je zadano poljem:
-    let shuffledPos = [7, 29, 28, 9, 11, 5, 10, 8, 27, 4, 3, 26, 20, 25, 6, 15, 1, 21, 0, 18, 19, 22, 14, 23, 13, 24, 16, 2, 17, 12],
-        resultA = [];
+    let resultA = [];
 
-    for(let i=0,max=originalArr.length;i<max;i++) {
+    for(let i=0,max=shuffledPos.length;i<max;i++) {
         resultA[i] = originalArr[  shuffledPos[i]  ];
     }
 
