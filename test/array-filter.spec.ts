@@ -1,4 +1,4 @@
-import { originalMainParentArr, originalSubparentArr, originalArr } from './test-data';
+import { originalArr } from './test-data';
 import filterByKeys from '../lib/array-filter';
 
 describe('filterByKeys', () => {

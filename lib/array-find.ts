@@ -1,5 +1,5 @@
-import { filterByKeys } from "./array-filter";
-import { CompareBy } from "./lib-types";
+import filterByKeys from "./array-filter";
+import { CompareBy, Map } from "./lib-types";
 
 /**
  * Returns the first matched element of the given type
@@ -7,7 +7,7 @@ import { CompareBy } from "./lib-types";
  * @param key_columns key column names
  * @param key_values key values to be matched
  */
-const findFirstById = <T>(aSearch:Array<T>, key_columns:CompareBy, key_values:Array<string>):T => {
+const findFirstById = <T>(aSearch:Array<T>, key_columns:CompareBy, key_values:Map=null):T => {
     return(filterByKeys(aSearch, key_columns, key_values, true)[0]);
 }
 
