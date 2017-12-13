@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { overwrite } from './simple-methods';
-import { ArrayLinkConfig, ArrayLinkResult, CompareBy, Map } from './array-diff-merge-types';
+import { ArrayLinkConfig, ArrayLinkResult, CompareBy, Map } from './lib-types';
 import compareA from './array-compare';
 
 /**

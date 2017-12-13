@@ -1,5 +1,5 @@
 import compileC from './comparer-compiler';
-import { ArrayUniqueConfig, CompareBy } from './array-diff-merge-types';
+import { ArrayUniqueConfig, CompareBy } from './lib-types';
 import { sortOn } from './simple-methods';
 
 /**

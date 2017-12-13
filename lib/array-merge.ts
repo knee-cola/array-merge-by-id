@@ -1,4 +1,4 @@
-import { ArrayDiffResult, ArrayDiffConfig, CompareBy, Map } from './array-diff-merge-types';
+import { ArrayDiffResult, ArrayDiffConfig, CompareBy, Map } from './lib-types';
 import { sortOn } from './simple-methods';
 import diffA from './array-compare';
 import { defaults, concat } from 'lodash';

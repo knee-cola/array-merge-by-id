@@ -1,5 +1,5 @@
 import { defaultTo, concat } from 'lodash';
-import { ArrayDiffResult, ArrayDiffConfig, CompareBy, ComparerFn, CallbackFn } from './array-diff-merge-types';
+import { ArrayDiffResult, ArrayDiffConfig, CompareBy, ComparerFn, CallbackFn } from './lib-types';
 import { sortOn } from './simple-methods';
 import compileComparer from './comparer-compiler';
 

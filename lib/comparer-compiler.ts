@@ -1,6 +1,6 @@
 
 import {isFunction, isArray} from 'lodash';
-import { CompareBy, ComparerFn } from './array-diff-merge-types';
+import { CompareBy, ComparerFn } from './lib-types';
 
 // cached comparer functions
 const _comparer_cache:{ [key:string]:ComparerFn; }[] = [];

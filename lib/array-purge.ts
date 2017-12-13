@@ -2,7 +2,7 @@ import { defaultTo } from 'lodash';
 import { sortOn } from './simple-methods';
 import { overwrite } from './simple-methods';
 import compileC from './comparer-compiler';
-import { ArrayPurgeConfig, CompareBy, Map, ComparerFn } from './array-diff-merge-types';
+import { ArrayPurgeConfig, CompareBy, Map, ComparerFn } from './lib-types';
 
 /**
  * Removes elements of a provided array indicated by a hit list array (ones which can be matched with an element from a hit list get removed)

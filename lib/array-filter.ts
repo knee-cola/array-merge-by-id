@@ -1,4 +1,4 @@
-import { CompareBy, ComparerFn } from './array-diff-merge-types';
+import { CompareBy, ComparerFn } from './lib-types';
 import compileC from './comparer-compiler';
 
 /**

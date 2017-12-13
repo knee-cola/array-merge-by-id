@@ -1,6 +1,6 @@
 import {defaults} from 'lodash';
 import diffA from './array-compare';
-import { ArrayDiffResult, ArrayDiffConfig, CompareBy, CallbackFn } from './array-diff-merge-types';
+import { ArrayDiffResult, ArrayDiffConfig, CompareBy, CallbackFn } from './lib-types';
 
 /**
  * Calls a callback method for each matched elements of two provided arrays

@@ -1,8 +1,8 @@
 import {concat} from 'lodash';
-import {ArrayDiffResult, ArrayDiffConfig, CompareBy, ComparerFn, CallbackFn, Map} from './array-diff-merge-types';
+import {ArrayDiffResult, ArrayDiffConfig, CompareBy, ComparerFn, CallbackFn, Map} from './lib-types';
 import compileC from './comparer-compiler';
 
-const _undef = void 0;
+const _undef:any = void 0;
 
 /**
  * Sorts the given array based on the given key name array
