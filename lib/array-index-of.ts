@@ -1,5 +1,5 @@
 import { compileC } from "./index";
-import { CompareBy } from "./lib-types";
+import { CompareBy } from "./lib-types"
 
 /**
  * Returns index of first element in the given array which is matched by provided key values
