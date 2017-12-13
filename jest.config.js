@@ -1,6 +1,6 @@
 module.exports = {
     "name": "array-merge-by-id",
-    "verbose": true,
+    "verbose": false,
     "testRegex": "/test/.*\\.spec\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
         "ts",
