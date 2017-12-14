@@ -13,8 +13,8 @@ const stringifyIDs = <T>(data:T|Array<T>):string => {
         return(`[${data.map(stringifyIDs).join(',')}]`);
     }
 
-    var sReturn,
-        sGlue = '';
+    var sReturn:string,
+        sGlue:string = '';
 
     for(let key in data) {
         if(key.substr(key.length-2,2) === 'ID') {
