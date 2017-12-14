@@ -13,7 +13,7 @@ import { ArrayPurgeConfig, CompareBy, Map, ComparerFn } from './lib-types';
  * @description Both input arrays will be sorted in ascending manner (`key_columns` will be used).
  * This can be disabled by setting `skipSort` to `true`, or `sortLeftBy` and `sortRightBy` in `config`
  */
-function purgeA<T>(aTarget:Array<T>, aHitList:Array<Map>, key_columns:CompareBy, {sortBy,sortLeftBy,sortRightBy,skipSort=false,mapRemoved=false,matchMulti=false}:ArrayPurgeConfig):Array<T> {
+function purgeA<T>(aTarget:Array<T>, aHitList:Array<Map>, key_columns:CompareBy, {sortBy,sortLeftBy,sortRightBy,skipSort=false,mapRemoved=false,matchMulti=false}:ArrayPurgeConfig={}):Array<T> {
     
     var j:number=aTarget.length,
         i:number=aHitList.length,
