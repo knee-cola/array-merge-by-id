@@ -35,8 +35,6 @@ describe('`compareA` edge test cases with single-data-type tables', () => {
         testCase = cloneDeep(testCase);
 
         it("("+testCase.caseName+")in case a callback function is passed `compareC` should call the function for each of the matched pairs", function() {
-        
-            
             let callbackFn = jest.fn(),
             diff = compareA(testCase.leftA, testCase.rightA, childKey, { callbackFn: callbackFn });
             
