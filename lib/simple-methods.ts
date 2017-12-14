@@ -39,4 +39,19 @@ function overwrite(target:Array<any>, source:Array<any>):Array<any> {
     return(target); // returning the `target` array ... enabling chaining
 }
 
-export { sortOn, clear, overwrite };
+/**
+* Does an in-place concatination of elements of the `source` array at the end of `target` array
+* @param target array which should receive new elements
+* @param source array of elements which should be added at the end of the `target` array
+* @returns reference to the `target` array
+ */
+function concat<T>(target:Array<T>, source:Array<any>):Array<T> {
+
+    for(var i = 0, max=source.length; i<max; i+=1000) {
+        target.push.apply(target, source.slice(i,i+1000));
+    }
+
+    return(target);
+}
+
+export { sortOn, clear, overwrite, concat };

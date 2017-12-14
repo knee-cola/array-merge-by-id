@@ -1,7 +1,7 @@
 import { ArrayDiffResult, ArrayDiffConfig, CompareBy, Map } from './lib-types';
-import { sortOn } from './simple-methods';
+import { sortOn, concat } from './simple-methods';
 import diffA from './array-compare';
-import { defaults, concat } from 'lodash';
+import { defaults } from 'lodash';
 
 /**
  * Method merges new and changed elements into an existing array without duplication. Matching elements from two arrays are passed to a callback function if one is provided

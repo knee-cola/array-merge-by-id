@@ -1,6 +1,6 @@
-import { defaultTo, concat } from 'lodash';
+import { defaultTo } from 'lodash';
 import { ArrayDiffResult, ArrayDiffConfig, CompareBy, ComparerFn, CallbackFn } from './lib-types';
-import { sortOn } from './simple-methods';
+import { sortOn, concat } from './simple-methods';
 import compileComparer from './comparer-compiler';
 
 const _undef:any = void 0;
@@ -68,7 +68,7 @@ const compareA = <T,K>(leftA:Array<T>, rightA:Array<K>, key_columns:CompareBy, {
         left_el = leftA[left_i];
 
         // should child elements be mapped?
-        if(mapName!==null) {
+        if(mapName) {
             mapA = left_el[mapName];
 
             if(!mapA) {
