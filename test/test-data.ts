@@ -1,21 +1,20 @@
-/* spell-checker: disable */
-const originalMainParentArr = [
-        {mainID:1, name:'familija'},
-        {mainID:2, name:'prijatelji'},
-        {mainID:3, name:'aož'},
-        {mainID:4, name:'pustolovi'}
-    ],
-
-    originalSubparentArr = [
-        {mainID:1, subID:1, name:'familija'}, // 0
-        {mainID:2, subID:1, name:'busije'}, // 1
-        {mainID:2, subID:2, name:'đorđevići'}, // 2
-        {mainID:2, subID:3, name:'đimotiji'}, // 3
-        {mainID:3, subID:1, name:'aož'}, // 4
-        {mainID:3, subID:2, name:'trekeri'}, // 5
-        {mainID:4, subID:1, name:'pustolovi'} // 6
-    ],
-    originalArr = [
+//const originalMainParentArr = [
+//        {mainID:1, name:'familija'},
+//        {mainID:2, name:'prijatelji'},
+//        {mainID:3, name:'aož'},
+//        {mainID:4, name:'pustolovi'}
+//    ],
+//
+//    originalSubparentArr = [
+//        {mainID:1, subID:1, name:'familija'}, // 0
+//        {mainID:2, subID:1, name:'busije'}, // 1
+//        {mainID:2, subID:2, name:'đorđevići'}, // 2
+//        {mainID:2, subID:3, name:'đimotiji'}, // 3
+//        {mainID:3, subID:1, name:'aož'}, // 4
+//        {mainID:3, subID:2, name:'trekeri'}, // 5
+//        {mainID:4, subID:1, name:'pustolovi'} // 6
+//    ],
+const originalArr = [
         {mainID:1, subID:1, selfID:1, name:'nikola'}, // 0
         {mainID:1, subID:1, selfID:2, name:'andrija'}, // 1
         {mainID:1, subID:1, selfID:3, name:'marija'}, // 2
@@ -54,4 +53,5 @@ const originalMainParentArr = [
         {mainID:4, subID:1, selfID:3, name:'ivek'} // 29
     ];
 
-export { originalMainParentArr, originalSubparentArr, originalArr }
+
+export { originalArr }
