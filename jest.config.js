@@ -1,6 +1,7 @@
 module.exports = {
     "name": "array-merge-by-id",
     "verbose": false,
+    "bail": true, // stop running tests after first fail
     "testRegex": "/test/.*\\.spec\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
         "ts",
