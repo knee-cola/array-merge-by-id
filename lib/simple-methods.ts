@@ -1,4 +1,3 @@
-import {concat} from 'lodash';
 import {ArrayDiffResult, ArrayDiffConfig, CompareBy, ComparerFn, CallbackFn, Map} from './lib-types';
 import compileC from './comparer-compiler';
 
