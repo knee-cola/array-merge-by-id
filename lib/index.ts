@@ -1,5 +1,5 @@
 import compareA from './array-compare';
-import {filterByKeys, findFirstById, indexOf} from './array-filter';
+import filterByKeys from './array-filter';
 import linkA from './array-link';
 import mergeA from './array-merge';
 import purgeA from './array-purge';
@@ -8,10 +8,14 @@ import uniqueA from './array-unique';
 import compileC from './comparer-compiler';
 import eachPair from './each-pair';
 import { sortOn, clear, overwrite } from './simple-methods';
+import indexOf from './array-index-of';
+import findFirstById from './array-find';
 
 export {
     compareA,
-    filterByKeys, findFirstById, indexOf,
+    filterByKeys,
+    findFirstById,
+    indexOf,
     linkA,
     mergeA,
     purgeA,
