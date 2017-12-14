@@ -8,7 +8,7 @@ import { sortOn } from './simple-methods';
  * @param key_columns list of key columns or comparer function, which should be used to compare/match elements
  * @param config additional config parameters
  */
-const uniqueA = <T>(source:Array<T>, key_columns:CompareBy, {skipSort=false, elFreq=[]}:ArrayUniqueConfig):Array<T> => {
+const uniqueA = <T>(source:Array<T>, key_columns:CompareBy, {skipSort=false, elFreq=[]}:ArrayUniqueConfig={}):Array<T> => {
     
     var comparerFn = compileC(key_columns);
 
