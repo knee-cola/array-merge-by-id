@@ -1,4 +1,3 @@
-
 import { ParentDataRow, ChildDataRow } from './test-data-types';
 
 const parentData:Array<ParentDataRow> = [
@@ -10,9 +9,9 @@ const parentData:Array<ParentDataRow> = [
 const childData:Array<ChildDataRow> = [
     {FamilyID: 1, MemberID:1, name:'Marilyn'},
     {FamilyID: 1, MemberID:2, name:'Cornelius'},
-    {FamilyID: 2, MemberID:3, name:'Tonette'},
-    {FamilyID: 3, MemberID:4, name:'Hana'},
-    {FamilyID: 3, MemberID:5, name:'Lauran'}
+    {FamilyID: 2, MemberID:1, name:'Tonette'},
+    {FamilyID: 3, MemberID:1, name:'Hana'},
+    {FamilyID: 3, MemberID:2, name:'Lauran'}
 ];
 
 export { parentData, childData }

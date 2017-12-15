@@ -8,7 +8,7 @@ import * as compileComparer from '../lib/comparer-compiler';
 import { cloneDeep } from 'lodash';
 
 const parentKey = ["FamilyID"];
-const childKey = ["MemberID"];
+const childKey = ["FamilyID", "MemberID"]; // `MemberID` are not unique
 
 // the followin tests compare two tables containting the same type of data
 describe('`compareA` edge test cases with single-data-type tables', () => {
