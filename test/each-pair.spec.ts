@@ -13,7 +13,7 @@ describe('eachPair', () => {
         childA = simpleCase.childA.slice();
     });
 
-    it('`eachPair` treba za svaki upareni par elemenata dvaju polja pozvati callback funkciju', () => {
+    it('`eachPair` should call the provided callback functon for each matched element pair', () => {
 
         let callbackFn = jest.fn();
 
