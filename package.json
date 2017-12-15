@@ -7,7 +7,10 @@
     "prod": "webpack -p",
     "dev": "webpack --verbose",
     "test": "jest",
-    "testw": "jest --watch"
+    "testw": "jest --watch",
+    "tsc": "tsc",
+    "docc": "jsdoc2md --template ./README.hbs ./dist/array-compare.js > README.md",
+    "doc": "jsdoc2md --template ./README.hbs ./dist/{array-compare,array-filter,array-link,array-merge,array-purge,stringify-ids,array-unique,comparer-compiler,each-pair,simple-methods,array-index-of,array-find}.js > README.md"
   },
   "repository": {
     "type": "git",
@@ -31,9 +34,11 @@
     "babel-loader": "^8.0.0-beta.0",
     "clean-webpack-plugin": "^0.1.17",
     "jest": "^21.2.1",
+    "jsdoc-to-markdown": "^3.0.2",
     "ts-jest": "^21.2.4",
     "ts-loader": "^3.1.1",
     "typescript": "^2.6.1",
-    "webpack": "^3.8.1"
+    "typescript-compiler": "^1.4.1-2",
+    "webpack": "^3.10.0"
   }
 }

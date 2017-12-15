@@ -7,14 +7,20 @@
         "target": "ESNEXT",
         // module code generation ('commonjs', 'amd', 'system', 'umd' or 'es2015')
         "module": "commonjs",
+        "sourceMap": true,
+        "noLib": false,
+        "outDir": "./dist/",
         // create declaration files in output folder
         "declaration": true,
-        "declarationDir": "./"
+        "declarationDir": "./dist/"
     },
     "exclude": [
         "node_modules",
         "dist",
         "test",
         "__mocks__"
-    ]
+    ],
+    "include": [
+       "lib/*.ts"
+  ]    
 }  
