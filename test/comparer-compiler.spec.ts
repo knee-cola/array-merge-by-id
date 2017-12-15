@@ -25,6 +25,11 @@ describe('`compileC`', () => {
         expect(compileC(['id1', 'id2', 'id3'])).toBeInstanceOf(Function);
     });
 
+    it("if passed a function as the first argument `compileC` must return that function", function() {
+        let dummyFn = (left, right) => 0;
+        expect(compileC(dummyFn)).toBe(dummyFn);
+    });
+
     it("function returned by `compileC` must return 0 if two provided objects are equal", function() {
         let compiledFn = compileC(['id1', 'id2', 'id3']);
         let oneCase = equalCases[0];
