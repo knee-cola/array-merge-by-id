@@ -7,16 +7,17 @@ const _undef:any = void 0;
 
 /**
  * Compares elements of two arrays and returns an object containing common elements and differences.
- * @param leftA first array be compared
- * @param rightA second array be compared
- * @param key_columns list of key columns or comparer function, which should be used to compare/match elements
- * @param config additional parameters
+ * 
+ * @param {Array<T>} leftA first array be compared 
+ * @param {Array<K>} rightA¸second array be compared 
+ * @param {CompareBy} key_columns list of key columns or comparer function, which should be used to compare/match elements
+ * @param {ArrayDiffConfig} config additional parameters
+ * @returns {ArrayDiffResult<T,K>} comparisson results
  * 
  * @description Both input arrays will be sorted in ascending manner (`key_columns` will be used).
  *              This can be disabled by setting `sortLeftBy` and `sortRightBy` in config parameter.
  *              Note2: since elements are compared by comparing key values, the two arrays can contain
  *              totally different objects, which only share key values
- * 
  */
 const compareA = <T,K>(leftA:Array<T>, rightA:Array<K>, key_columns:CompareBy, {unique=false,skipSort=false,sortLeftBy,sortRightBy,linkName,mapName,callbackFn=null}:ArrayDiffConfig={}):ArrayDiffResult<T,K> => {
 
