@@ -6,13 +6,13 @@ import compileC from './comparer-compiler';
 const _undef:any = void 0;
 
 /**
- * Compares elements of two arrays and returns an object containing common elements and differences.
+ * Compares elements of two arrays and returns an object containing common elements and differences (see [comparisson results object](#arraydiffresult)).
  * 
  * @param {Array<T>} leftA first array be compared 
  * @param {Array<K>} rightA second array be compared 
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
  * @param {ArrayDiffConfig} config (optional) [additional config parameters](#configarraydiffconfig-param)
- * @returns {ArrayDiffResult} comparisson results object](#arraydiffresult)
+ * @returns {ArrayDiffResult} [comparisson results object](#arraydiffresult)
  * 
  * @example
  * let leftA = [
