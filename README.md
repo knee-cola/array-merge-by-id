@@ -33,6 +33,13 @@ console.dir(currData);
 
 Documentation for each of the functions can be found below ...
 
+# How to install?
+
+Simply open up a terminal, go to your project directory and run:
+```
+npm i --save array-merge-by-id
+```
+
 ## Functions
 
 <dl>
@@ -578,3 +585,6 @@ The following params are unique to this param type:
     orphans:Array<K>
 }
 ```
+
+# License
+MIT License, [http://www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
