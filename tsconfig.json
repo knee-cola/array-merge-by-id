@@ -9,10 +9,8 @@
         "module": "commonjs",
         "sourceMap": true,
         "noLib": false,
-        "outDir": "./dist/",
         // create declaration files in output folder
-        "declaration": true,
-        "declarationDir": "./dist/"
+        "declaration": true
     },
     "exclude": [
         "node_modules",
