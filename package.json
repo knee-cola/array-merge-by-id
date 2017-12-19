@@ -4,12 +4,13 @@
   "description": "array merging and comparing",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -r ./dist/",
     "prod": "webpack -p",
     "dev": "webpack --verbose",
     "test": "jest",
     "testw": "jest --watch",
-    "tsc": "tsc",
-    "doc": "tsc && jsdoc2md --template ./README.hbs ./dist/{array-compare,array-merge,array-link,array-filter,each-pair,array-purge,array-unique,array-index-of,array-find,stringify-ids,comparer-compiler,simple-methods}.js > README.md"
+    "tsc": "tsc --outDir ./dist/ --declaration false --sourceMap false",
+    "doc": "npm run clean && npm run tsc && jsdoc2md --template ./README.hbs ./dist/{array-compare,array-merge,array-link,array-filter,each-pair,array-purge,array-unique,array-index-of,array-find,stringify-ids,comparer-compiler,simple-methods}.js > README.md"
   },
   "repository": {
     "type": "git",
