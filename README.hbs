@@ -121,3 +121,18 @@ The following params are unique to this param type:
     rightDiff:Array<K>
 }
 ```
+
+## `ArrayLinkResult`
+``ArrayLinkResult`` contains results of linking two arrays. It has the following structure:
+```javascript
+{
+    // parent elements with no matched child elements
+    childless:Array<T>,
+    // parent elements with matching children
+    parents:Array<T>,
+    // child elements with matching parent
+    children:Array<K>,
+    // child elements without a matching parent
+    orphans:Array<K>
+}
+```

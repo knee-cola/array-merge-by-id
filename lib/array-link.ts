@@ -35,7 +35,6 @@ function linkA<T,K>(parentA:Array<T>, childA:Array<K>, key_columns:CompareBy, li
     }
 
     return({
-        diff: diff,
         childless:diff.leftDiff,
         parents:diff.leftCommon,
         children:diff.rightCommon,

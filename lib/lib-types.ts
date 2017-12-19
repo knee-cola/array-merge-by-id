@@ -68,8 +68,7 @@ type ArrayLinkResult<T,K> = {
     parents:Array<T>,
     // elements of the second array don't need to be of the same type
     children:Array<K>,
-    orphans:Array<K>,
-    diff: ArrayDiffResult<T,K>
+    orphans:Array<K>
 }
 
 type ArrayUniqueConfig = {
