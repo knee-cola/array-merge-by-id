@@ -9,6 +9,7 @@ import { defaults } from 'lodash';
  * @param newData an array of changes and new data elements
  * @param sortKeys key name array or a comparer function, which will be used to compare elements of the two arrays
  * @param config additional config, which can contain a callback function (it's optional)
+ * @returns {ArrayDiffResult} comparisson results
  * 
  * @description this sorts the given arrays, where it uses the `sortKeys` param. Also the `currData` will be concatinated with new elements from `newData` array
  */
