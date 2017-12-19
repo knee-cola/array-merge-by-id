@@ -39,10 +39,10 @@ Documentation for each of the functions can be found below ...
 <dt><a href="#compareA">compareA(leftA, rightA, key_columns, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>Compares elements of two arrays and returns an object containing common elements and differences.</p>
 </dd>
-<dt><a href="#filterByKeys">filterByKeys(aSearch, key_columns, key_values, findFirstOnly)</a> ⇒ <code>Array.&lt;T&gt;</code></dt>
+<dt><a href="#filterByKeys">filterByKeys(aSearch, key_columns, key_values, findFirstOnly)</a> ⇒ <code>Array</code></dt>
 <dd><p>Extract all the array elements which match the given key values (or are indicated by a comparer function)</p>
 </dd>
-<dt><a href="#findFirstById">findFirstById(aSearch, key_columns, key_values)</a> ⇒ <code>T</code></dt>
+<dt><a href="#findFirstById">findFirstById(aSearch, key_columns, key_values)</a> ⇒ <code>Object</code></dt>
 <dd><p>Returns the first matched element of the given type</p>
 </dd>
 <dt><a href="#indexOf">indexOf(aSearch, key_columns, key_values)</a> ⇒ <code>number</code></dt>
@@ -54,10 +54,10 @@ Documentation for each of the functions can be found below ...
 <dt><a href="#mergeA">mergeA(currData, newData, key_columns, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>Merges new/changed elements into an existing array</p>
 </dd>
-<dt><a href="#purgeA">purgeA(aTarget, aHitList, key_columns, config)</a> ⇒ <code>Array.&lt;T&gt;</code></dt>
+<dt><a href="#purgeA">purgeA(aTarget, aHitList, key_columns, config)</a> ⇒ <code>Array</code></dt>
 <dd><p>Removes elements indicated by a hit list from the provided array</p>
 </dd>
-<dt><a href="#uniqueA">uniqueA(source, key_columns, config)</a> ⇒ <code>Array.&lt;T&gt;</code></dt>
+<dt><a href="#uniqueA">uniqueA(source, key_columns, config)</a> ⇒ <code>Array</code></dt>
 <dd><p>Copies unique elements from <code>source</code> to a new array, which is then returned</p>
 </dd>
 <dt><a href="#compileC">compileC(key_columns)</a> ⇒ <code>function</code></dt>
@@ -124,15 +124,15 @@ console.dir(diff);
 ```
 <a name="filterByKeys"></a>
 
-## filterByKeys(aSearch, key_columns, key_values, findFirstOnly) ⇒ <code>Array.&lt;T&gt;</code>
+## filterByKeys(aSearch, key_columns, key_values, findFirstOnly) ⇒ <code>Array</code>
 Extract all the array elements which match the given key values (or are indicated by a comparer function)
 
 **Kind**: global function  
-**Returns**: <code>Array.&lt;T&gt;</code> - array of matched elements  
+**Returns**: <code>Array</code> - array of matched elements  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| aSearch |  | array to be searched |
+| aSearch | <code>Array</code> | array to be searched |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 | key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it |
 | findFirstOnly | <code>boolean</code> | (optional) should only the first matched element be returned (defaults to `false`) |
@@ -147,15 +147,15 @@ console.dir(myCityStreets); // will output [{cityID:22, streetID:1}, {cityID:22,
 ```
 <a name="findFirstById"></a>
 
-## findFirstById(aSearch, key_columns, key_values) ⇒ <code>T</code>
+## findFirstById(aSearch, key_columns, key_values) ⇒ <code>Object</code>
 Returns the first matched element of the given type
 
 **Kind**: global function  
-**Returns**: <code>T</code> - matched array element  
+**Returns**: <code>Object</code> - matched array element  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| aSearch |  | array to be searched |
+| aSearch | <code>Array</code> | array to be searched |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 | key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
 
@@ -177,7 +177,7 @@ Returns index of first matching element in the given array
 
 | Param | Type | Description |
 | --- | --- | --- |
-| aSearch |  | array to be searched |
+| aSearch | <code>Array</code> | array to be searched |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 | key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
 
@@ -199,8 +199,8 @@ Extends each child array element with a reference to it's parent element (in `pa
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| parentA |  |  | array containting parent elements |
-| childA |  |  | array containing child elements |
+| parentA | <code>Array</code> |  | array containting parent elements |
+| childA | <code>Array</code> |  | array containing child elements |
 | key_columns | <code>CompareBy</code> |  | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 | linkName | <code>string</code> | <code>&quot;parent&quot;</code> | (optional) name of the property which should be assigned a reference to parent element (defaults to 'parent') |
 | config | <code>ArrayDiffConfig</code> |  | (optional) [additional config parameters](#configarraydiffconfig-param) |
@@ -224,8 +224,8 @@ Merges new/changed elements into an existing array
 
 | Param | Type | Description |
 | --- | --- | --- |
-| currData |  | an array of "current" data elements |
-| newData |  | an array of changes and new data elements |
+| currData | <code>Array</code> | an array of "current" data elements |
+| newData | <code>Array</code> | an array of changes and new data elements |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 | config | <code>ArrayDiffConfig</code> | (optional) [additional config parameters](#configarraydiffconfig-param) |
 
@@ -243,16 +243,16 @@ console.dir(currData); // will print [ {cityID:1, cityName:'New York'}, {cityID:
 ```
 <a name="purgeA"></a>
 
-## purgeA(aTarget, aHitList, key_columns, config) ⇒ <code>Array.&lt;T&gt;</code>
+## purgeA(aTarget, aHitList, key_columns, config) ⇒ <code>Array</code>
 Removes elements indicated by a hit list from the provided array
 
 **Kind**: global function  
-**Returns**: <code>Array.&lt;T&gt;</code> - an array of removed elements  
+**Returns**: <code>Array</code> - an array of removed elements  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| aTarget |  | array to be purged |
-| aHitList |  | hit list - indicates which element from `aTarget` should be removed |
+| aTarget | <code>Array</code> | array to be purged |
+| aHitList | <code>Array</code> | hit list - indicates which element from `aTarget` should be removed |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 | config | <code>ArrayPurgeConfig</code> | (optional) [additional config parameters](#configarraypurgeconfig-param) |
 
@@ -270,15 +270,15 @@ console.dir(elFreq); // will print [1, 2] - it means that the first array elemen
 ```
 <a name="uniqueA"></a>
 
-## uniqueA(source, key_columns, config) ⇒ <code>Array.&lt;T&gt;</code>
+## uniqueA(source, key_columns, config) ⇒ <code>Array</code>
 Copies unique elements from `source` to a new array, which is then returned
 
 **Kind**: global function  
-**Returns**: <code>Array.&lt;T&gt;</code> - array of unique elements  
+**Returns**: <code>Array</code> - array of unique elements  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| source |  | source array - which may contain duplicates |
+| source | <code>Array</code> | source array - which may contain duplicates |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 | config | <code>ArrayUniqueConfig</code> | (optional) additional config parameters (see [ArrayUniqueConfig](#arrayuniqueconfig)) |
 
@@ -339,12 +339,28 @@ Calls a callback method for each matched elements of provided arrays
 
 | Param | Type | Description |
 | --- | --- | --- |
-| leftA |  | first array of elements |
-| rightA |  | second array of elements |
+| leftA | <code>Array</code> | first array of elements |
+| rightA | <code>Array</code> | second array of elements |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| callbackFn |  | function to be called for each of mathced element pairs |
-| config | <code>ArrayDiffConfig</code> | [additional config parameters](#configarraydiffconfig-param) |
+| callbackFn | <code>function</code> | function to be called for each of mathced element pairs |
+| config | <code>ArrayDiffConfig</code> | (optional) [additional config parameters](#configarraydiffconfig-param) |
 
+**Example**  
+```js
+let cities = [ {cityID:22, name:'New York'}, {cityID:44, name:'London'} ];
+let streets = [{cityID:22, streetID:1, name:'Elm Street'}, {cityID:22, streetID:3, name:'Wall St'}, {cityID:44, streetID:2, name:'Downing St'}];
+
+let callbackFn = (city, street) => {
+  console.log(street.name + ' ' + city.name)
+}
+
+eachPair(cities, streets, ["cityID"], callbackFn);
+
+// The following will be printed to console:
+// Elm Street in New York
+// Wall St in New York
+// Downing St in London
+```
 <a name="sortOn"></a>
 
 ## sortOn(source, aKeys)
@@ -352,10 +368,10 @@ Sorts the given array based on the given key name array
 
 **Kind**: global function  
 
-| Param | Description |
-| --- | --- |
-| source | array to be sorted |
-| aKeys | array of keys to be used in sorting the function OR a comparer function |
+| Param | Type | Description |
+| --- | --- | --- |
+| source | <code>Array</code> | array to be sorted |
+| aKeys |  | array of keys to be used in sorting the function OR a comparer function |
 
 <a name="clear"></a>
 
@@ -364,9 +380,9 @@ Removes all the elements of the given array
 
 **Kind**: global function  
 
-| Param |
-| --- |
-| target | 
+| Param | Type |
+| --- | --- |
+| target | <code>Array</code> | 
 
 <a name="overwrite"></a>
 
@@ -375,10 +391,10 @@ removes all the elements of `target` and replaces them with elements from `sourc
 
 **Kind**: global function  
 
-| Param | Description |
-| --- | --- |
-| target | array to be overwritten |
-| source | array who's elements are to be places in `target` |
+| Param | Type | Description |
+| --- | --- | --- |
+| target | <code>Array</code> | array to be overwritten |
+| source | <code>Array</code> | array who's elements are to be places in `target` |
 
 <a name="concat"></a>
 
@@ -388,10 +404,10 @@ Does an in-place concatination of elements of the `source` array at the end of `
 **Kind**: global function  
 **Returns**: reference to the `target` array  
 
-| Param | Description |
-| --- | --- |
-| target | array which should receive new elements |
-| source | array of elements which should be added at the end of the `target` array |
+| Param | Type | Description |
+| --- | --- | --- |
+| target | <code>Array</code> | array which should receive new elements |
+| source | <code>Array</code> | array of elements which should be added at the end of the `target` array |
 
 <a name="stringifyIDs"></a>
 
