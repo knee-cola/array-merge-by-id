@@ -13,13 +13,13 @@ Documentation for each of the functions can be found below ...
 <dt><a href="#compareA">compareA(leftA, rightA, key_columns, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>Compares elements of two arrays and returns an object containing common elements and differences.</p>
 </dd>
-<dt><a href="#filterByKeys">filterByKeys(aSearch, key_columns, key_values, findFirstOnly)</a> ⇒</dt>
+<dt><a href="#filterByKeys">filterByKeys(aSearch, key_columns, key_values, findFirstOnly)</a> ⇒ <code>Array.&lt;T&gt;</code></dt>
 <dd><p>Extract all the array elements which match the given key values (or are indicated by a comparer function)</p>
 </dd>
-<dt><a href="#findFirstById">findFirstById(aSearch, key_columns, key_values)</a> ⇒</dt>
+<dt><a href="#findFirstById">findFirstById(aSearch, key_columns, key_values)</a> ⇒ <code>T</code></dt>
 <dd><p>Returns the first matched element of the given type</p>
 </dd>
-<dt><a href="#indexOf">indexOf(aSearch, key_columns, key_values)</a> ⇒</dt>
+<dt><a href="#indexOf">indexOf(aSearch, key_columns, key_values)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns index of first matching element in the given array</p>
 </dd>
 <dt><a href="#linkA">linkA(parentA, childA, key_columns, linkName, config)</a></dt>
@@ -77,11 +77,11 @@ Compares elements of two arrays and returns an object containing common elements
 
 <a name="filterByKeys"></a>
 
-## filterByKeys(aSearch, key_columns, key_values, findFirstOnly) ⇒
+## filterByKeys(aSearch, key_columns, key_values, findFirstOnly) ⇒ <code>Array.&lt;T&gt;</code>
 Extract all the array elements which match the given key values (or are indicated by a comparer function)
 
 **Kind**: global function  
-**Returns**: array of matched elements  
+**Returns**: <code>Array.&lt;T&gt;</code> - array of matched elements  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -100,11 +100,11 @@ console.dir(myCityStreets); // will output [{cityID:22, streetID:1}, {cityID:22,
 ```
 <a name="findFirstById"></a>
 
-## findFirstById(aSearch, key_columns, key_values) ⇒
+## findFirstById(aSearch, key_columns, key_values) ⇒ <code>T</code>
 Returns the first matched element of the given type
 
 **Kind**: global function  
-**Returns**: matched array element  
+**Returns**: <code>T</code> - matched array element  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -122,11 +122,11 @@ console.dir(myStreet); // will output {cityID:44, streetID:2}
 ```
 <a name="indexOf"></a>
 
-## indexOf(aSearch, key_columns, key_values) ⇒
+## indexOf(aSearch, key_columns, key_values) ⇒ <code>number</code>
 Returns index of first matching element in the given array
 
 **Kind**: global function  
-**Returns**: element index  
+**Returns**: <code>number</code> - element index  
 
 | Param | Type | Description |
 | --- | --- | --- |

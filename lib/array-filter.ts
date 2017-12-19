@@ -8,7 +8,7 @@ import compileC from './comparer-compiler';
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
  * @param key_values (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it
  * @param findFirstOnly (optional) should only the first matched element be returned (defaults to `false`)
- * @returns array of matched elements
+ * @returns {Array<T>} array of matched elements
  * 
  * @example
 * let streets = [{cityID:22, streetID:1}, {cityID:44, streetID:2}, {cityID:22, streetID:3}];
