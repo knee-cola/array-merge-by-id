@@ -13,14 +13,14 @@ Documentation for each of the functions can be found below ...
 <dt><a href="#compareA">compareA(leftA, rightA, key_columns, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>Compares elements of two arrays and returns an object containing common elements and differences.</p>
 </dd>
-<dt><a href="#filterByKeys">filterByKeys(aSearch, key_columns, key_values, findFirstOnly)</a></dt>
-<dd><p>Extract array elements which match the given key values</p>
+<dt><a href="#filterByKeys">filterByKeys(aSearch, key_columns, key_values, findFirstOnly)</a> ⇒</dt>
+<dd><p>Extract all the array elements which match the given key values (or are indicated by a comparer function)</p>
 </dd>
-<dt><a href="#findFirstById">findFirstById(aSearch, key_columns, key_values)</a></dt>
+<dt><a href="#findFirstById">findFirstById(aSearch, key_columns, key_values)</a> ⇒</dt>
 <dd><p>Returns the first matched element of the given type</p>
 </dd>
-<dt><a href="#indexOf">indexOf(aSearch, key_columns, key_values)</a></dt>
-<dd><p>Returns index of first element in the given array which is matched by provided key values</p>
+<dt><a href="#indexOf">indexOf(aSearch, key_columns, key_values)</a> ⇒</dt>
+<dd><p>Returns index of first matching element in the given array</p>
 </dd>
 <dt><a href="#linkA">linkA(parentA, childA, key_columns, linkName, config)</a></dt>
 <dd><p>this method sorts both of the provided arrays (this can be disabled via <code>config</code>)</p>
@@ -77,44 +77,71 @@ Compares elements of two arrays and returns an object containing common elements
 
 <a name="filterByKeys"></a>
 
-## filterByKeys(aSearch, key_columns, key_values, findFirstOnly)
-Extract array elements which match the given key values
+## filterByKeys(aSearch, key_columns, key_values, findFirstOnly) ⇒
+Extract all the array elements which match the given key values (or are indicated by a comparer function)
 
 **Kind**: global function  
+**Returns**: array of matched elements  
 
-| Param | Description |
-| --- | --- |
-| aSearch | array to be searched |
-| key_columns | list of key columns or comparer function, which should be used to compare/match elements |
-| key_values | key values to be found |
-| findFirstOnly | should only the first matched element be returned (defaults to `false`) |
+| Param | Type | Description |
+| --- | --- | --- |
+| aSearch |  | array to be searched |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| key_values |  | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it |
+| findFirstOnly |  | (optional) should only the first matched element be returned (defaults to `false`) |
 
+**Example**  
+```js
+let streets = [{cityID:22, streetID:1}, {cityID:44, streetID:2}, {cityID:22, streetID:3}];
+
+let myCityStreets = filterByKeys(streets, ['cityID'], {cityID:22});
+
+console.dir(myCityStreets); // will output [{cityID:22, streetID:1}, {cityID:22, streetID:3}]
+```
 <a name="findFirstById"></a>
 
-## findFirstById(aSearch, key_columns, key_values)
+## findFirstById(aSearch, key_columns, key_values) ⇒
 Returns the first matched element of the given type
 
 **Kind**: global function  
+**Returns**: matched array element  
 
-| Param | Description |
-| --- | --- |
-| aSearch | array to be searched |
-| key_columns | key column names |
-| key_values | key values to be matched |
+| Param | Type | Description |
+| --- | --- | --- |
+| aSearch |  | array to be searched |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| key_values |  | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
 
+**Example**  
+```js
+let streets = [{cityID:22, streetID:1}, {cityID:44, streetID:2}, {cityID:22, streetID:3}];
+
+let myStreet = findFirstById(streets, ['cityID','streetID'], {cityID:44, streetID:2});
+
+console.dir(myStreet); // will output {cityID:44, streetID:2}
+```
 <a name="indexOf"></a>
 
-## indexOf(aSearch, key_columns, key_values)
-Returns index of first element in the given array which is matched by provided key values
+## indexOf(aSearch, key_columns, key_values) ⇒
+Returns index of first matching element in the given array
 
 **Kind**: global function  
+**Returns**: element index  
 
-| Param | Description |
-| --- | --- |
-| aSearch | array to be searched |
-| key_columns | key column names |
-| key_values | key column values |
+| Param | Type | Description |
+| --- | --- | --- |
+| aSearch |  | array to be searched |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| key_values |  | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
 
+**Example**  
+```js
+let streets = [{cityID:22, streetID:1}, {cityID:44, streetID:2}, {cityID:22, streetID:3}];
+
+let streetIndex = findFirstById(streets, ['cityID','streetID'], {cityID:44, streetID:2});
+
+console.log(streetIndex); // will print 1
+```
 <a name="linkA"></a>
 
 ## linkA(parentA, childA, key_columns, linkName, config)
