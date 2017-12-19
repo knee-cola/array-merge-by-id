@@ -6,7 +6,7 @@ import { CompareBy, Map } from "./lib-types";
  * 
  * @param aSearch array to be searched
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
- * @param key_values (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example
+ * @param {Map} key_values (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example
  * @returns {T} matched array element
  * 
  * @example

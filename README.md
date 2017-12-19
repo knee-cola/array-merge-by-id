@@ -87,8 +87,8 @@ Extract all the array elements which match the given key values (or are indicate
 | --- | --- | --- |
 | aSearch |  | array to be searched |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| key_values |  | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it |
-| findFirstOnly |  | (optional) should only the first matched element be returned (defaults to `false`) |
+| key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it |
+| findFirstOnly | <code>boolean</code> | (optional) should only the first matched element be returned (defaults to `false`) |
 
 **Example**  
 ```js
@@ -110,7 +110,7 @@ Returns the first matched element of the given type
 | --- | --- | --- |
 | aSearch |  | array to be searched |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| key_values |  | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
+| key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
 
 **Example**  
 ```js
@@ -132,7 +132,7 @@ Returns index of first matching element in the given array
 | --- | --- | --- |
 | aSearch |  | array to be searched |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| key_values |  | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
+| key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
 
 **Example**  
 ```js
