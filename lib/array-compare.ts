@@ -13,6 +13,28 @@ const _undef:any = void 0;
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
  * @param {ArrayDiffConfig} config (optional) [additional config parameters](#configarraydiffconfig-param)
  * @returns {ArrayDiffResult} comparisson results object](#arraydiffresult)
+ * 
+ * @example
+ * let leftA = [
+ *   {cityID:1, cityName:'New York', weather:"windy"},
+ *   {cityID:2, cityName:'London',   weather:"raining"}
+ * ];
+ * 
+ * let rightA = [
+ *   {cityID:2, cityName:'London', weather:"thunderstorm"},
+ *   {cityID:3, cityName:'Moscow', weather:"snowing"}
+ * ];
+ * 
+ * let diff = compareA(leftA, rightA, ["cityID"]);
+ * 
+ * // statment below will print:
+ * // {
+ * //   leftDiff: [{cityID:1, cityName:'New York', weather:"windy"}],         <= New York doesn't exist in the `rightA`
+ * //   leftCommon: [{cityID:2, cityName:'London', weather:"raining"}],       <= London does exist in `rightA`
+ * //   rightDiff: [{cityID:3, cityName:'Moscow', weather:"snowing"}],        <= Moscow exists in `leftA`
+ * //   rightCommon: [{cityID:2, cityName:'London', weather:"thunderstorm"}]  <= London exists in `leftA`
+ * // }
+ * console.dir(diff);
  */
 const compareA = <T,K>(leftA:Array<T>, rightA:Array<K>, key_columns:CompareBy, {unique=false,skipSort=false,sortLeftBy,sortRightBy,linkName,mapName,callbackFn=null}:ArrayDiffConfig={}):ArrayDiffResult<T,K> => {
 

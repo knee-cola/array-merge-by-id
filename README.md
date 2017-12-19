@@ -17,6 +17,7 @@ let newData = [
 ];
 
 // function which applies changes to an existing element
+// - it will be called for each matched pair of elements
 let mergeFn = (element, changes) => { element.cityName = changes.cityName; };
 
 let result = mergeA(currData, newData, ['cityID'], { callbackFn: mergeFn });
@@ -99,6 +100,29 @@ Compares elements of two arrays and returns an object containing common elements
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 | config | <code>ArrayDiffConfig</code> | (optional) [additional config parameters](#configarraydiffconfig-param) |
 
+**Example**  
+```js
+let leftA = [
+  {cityID:1, cityName:'New York', weather:"windy"},
+  {cityID:2, cityName:'London',   weather:"raining"}
+];
+
+let rightA = [
+  {cityID:2, cityName:'London', weather:"thunderstorm"},
+  {cityID:3, cityName:'Moscow', weather:"snowing"}
+];
+
+let diff = compareA(leftA, rightA, ["cityID"]);
+
+// statment below will print:
+// {
+//   leftDiff: [{cityID:1, cityName:'New York', weather:"windy"}],         <= New York doesn't exist in the `rightA`
+//   leftCommon: [{cityID:2, cityName:'London', weather:"raining"}],       <= London does exist in `rightA`
+//   rightDiff: [{cityID:3, cityName:'Moscow', weather:"snowing"}],        <= Moscow exists in `leftA`
+//   rightCommon: [{cityID:2, cityName:'London', weather:"thunderstorm"}]  <= London exists in `leftA`
+// }
+console.dir(diff);
+```
 <a name="filterByKeys"></a>
 
 ## filterByKeys(aSearch, key_columns, key_values, findFirstOnly) ⇒ <code>Array.&lt;T&gt;</code>

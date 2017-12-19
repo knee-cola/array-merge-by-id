@@ -17,6 +17,7 @@ let newData = [
 ];
 
 // function which applies changes to an existing element
+// - it will be called for each matched pair of elements
 let mergeFn = (element, changes) => { element.cityName = changes.cityName; };
 
 let result = mergeA(currData, newData, ['cityID'], { callbackFn: mergeFn });
