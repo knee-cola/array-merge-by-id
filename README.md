@@ -60,10 +60,9 @@ Documentation for each of the functions can be found below ...
 <dt><a href="#uniqueA">uniqueA(source, key_columns, config)</a> ⇒ <code>Array.&lt;T&gt;</code></dt>
 <dd><p>Copies unique elements from <code>source</code> to a new array, which is then returned</p>
 </dd>
-<dt><a href="#compileC">compileC(aKeys)</a></dt>
-<dd><p>Compiles a function which compares two data elements and detects which
-precedes which. It bases the comparison on the the
-given list of numeric keys. The resulting function can be used in i.e. <code>Array.sort</code></p>
+<dt><a href="#compileC">compileC(key_columns)</a> ⇒ <code>function</code></dt>
+<dd><p>Compiles and returns a function which compares two data elements and detects which comes before which in an orderd list.
+The compiled function expects the compared values to be numeric</p>
 </dd>
 <dt><a href="#eachPair">eachPair(leftA, rightA, key_columns, callbackFn, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>Calls a callback method for each matched elements of provided arrays</p>
@@ -293,17 +292,43 @@ console.dir(result); // will print [ {cityID:1, cityName:'New York'}, {cityID:2,
 ```
 <a name="compileC"></a>
 
-## compileC(aKeys)
-Compiles a function which compares two data elements and detects which
-precedes which. It bases the comparison on the the
-given list of numeric keys. The resulting function can be used in i.e. `Array.sort`
+## compileC(key_columns) ⇒ <code>function</code>
+Compiles and returns a function which compares two data elements and detects which comes before which in an orderd list.
+The compiled function expects the compared values to be numeric
 
 **Kind**: global function  
+**Returns**: <code>function</code> - compiled function  
 
-| Param | Description |
-| --- | --- |
-| aKeys | list of keys, which should be used to compare two array elements.              Default compare direction is ASC, which can be changed to DESC by adding ":desc" suffix to key name. |
+| Param | Type | Description |
+| --- | --- | --- |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 
+**Example**  
+```js
+// function for an ASCENDING order
+let ascFn = compileC('cityID','streetID');
+
+// will return 0
+ascFn({cityID:1, streetID:1}, {cityID:1, streetID:1});
+
+// will return 1
+ascFn({cityID:1, streetID:1}, {cityID:1, streetID:2});
+
+// will return -1
+ascFn({cityID:2, streetID:1}, {cityID:1, streetID:2});
+
+// function for an DESCENDING order
+let descFn = compileC('cityID:desc','streetID:desc');
+
+// will return 0
+descFn({cityID:1, streetID:1}, {cityID:1, streetID:1});
+
+// will return -1
+descFn({cityID:1, streetID:1}, {cityID:1, streetID:2});
+
+// will return 1
+descFn({cityID:2, streetID:1}, {cityID:1, streetID:2});
+```
 <a name="eachPair"></a>
 
 ## eachPair(leftA, rightA, key_columns, callbackFn, config) ⇒ <code>ArrayDiffResult</code>
@@ -390,6 +415,11 @@ Functions which compare array elements need to be instructed how two elements ca
 * by passing an array of ID property names, which should be compared to determin the relation of the two objects
 
 If an array of property names is passed, a comparer function will be compiled automatically (via `compileC`) function.
+
+### Descending order
+
+If a ID name array is passed as `key_columns` params, the compiled function will compare elements in ascending order.
+We can change this behaviour by appending `:desc` to a ID name ... like so: ['cityID:desc','streetID:desc']
 
 ## `config<ArrayDiffConfig>` param
 
