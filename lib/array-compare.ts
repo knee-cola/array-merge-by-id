@@ -1,7 +1,7 @@
 import { defaultTo } from 'lodash';
 import { ArrayDiffResult, ArrayDiffConfig, CompareBy, ComparerFn, CallbackFn } from './lib-types';
 import { sortOn, concat } from './simple-methods';
-import compileComparer from './comparer-compiler';
+import compileC from './comparer-compiler';
 
 const _undef:any = void 0;
 
@@ -49,7 +49,7 @@ const compareA = <T,K>(leftA:Array<T>, rightA:Array<K>, key_columns:CompareBy, {
             rightCommon:rightCommon,
             rightDiff:rightDiff
         },
-        comparerFn:ComparerFn = compileComparer(key_columns);
+        comparerFn:ComparerFn = compileC(key_columns);
 
     if(leftA.length === 0 || rightA.length === 0) {
         result.leftDiff = leftA.slice();

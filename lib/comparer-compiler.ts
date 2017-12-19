@@ -6,17 +6,40 @@ import { CompareBy, ComparerFn } from './lib-types';
 const _comparer_cache:{ [key:string]:ComparerFn; } = {};
 
 /**
- * Compiles a function which compares two data elements and detects which
- * precedes which. It bases the comparison on the the
- * given list of numeric keys. The resulting function can be used in i.e. `Array.sort`
- * @param aKeys list of keys, which should be used to compare two array elements. 
- *              Default compare direction is ASC, which can be changed to DESC by adding ":desc" suffix to key name.
+ * Compiles and returns a function which compares two data elements and detects which comes before which in an orderd list.
+ * The compiled function expects the compared values to be numeric
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @returns {Function} compiled function
+ * @example
+ * // function for an ASCENDING order
+ * let ascFn = compileC('cityID','streetID');
+ * 
+ * // will return 0
+ * ascFn({cityID:1, streetID:1}, {cityID:1, streetID:1});
+ * 
+ * // will return 1
+ * ascFn({cityID:1, streetID:1}, {cityID:1, streetID:2});
+ * 
+ * // will return -1
+ * ascFn({cityID:2, streetID:1}, {cityID:1, streetID:2});
+ * 
+ * // function for an DESCENDING order
+ * let descFn = compileC('cityID:desc','streetID:desc');
+ * 
+ * // will return 0
+ * descFn({cityID:1, streetID:1}, {cityID:1, streetID:1});
+ * 
+ * // will return -1
+ * descFn({cityID:1, streetID:1}, {cityID:1, streetID:2});
+ * 
+ * // will return 1
+ * descFn({cityID:2, streetID:1}, {cityID:1, streetID:2});
  */
-const compileC = (...aKeys:(string|CompareBy)[]):ComparerFn => {
+const compileC = (...key_columns:(string|CompareBy)[]):ComparerFn => {
 
-    let firstEl = aKeys[0];
+    let firstEl = key_columns[0];
 
-    if(aKeys.length === 1) {
+    if(key_columns.length === 1) {
 
         // making life easier for other functions
         // which accept key array OR pre-compiled
@@ -31,19 +54,19 @@ const compileC = (...aKeys:(string|CompareBy)[]):ComparerFn => {
         if(isArray(firstEl)) {
             // IF the first argument is an array
             // > key have been passed in an array
-                aKeys = <any>firstEl;
+                key_columns = <any>firstEl;
         }
     }
 
     let src:string='',
         // preparing cache signature
-        sign:string = aKeys.join('-');
+        sign:string = key_columns.join('-');
 
     // does cache already contain a function comparing the given key list?
     if(_comparer_cache[sign]) return(_comparer_cache[sign]);
 
-    for(let i=0,max=aKeys.length;i<max;i++) {
-        let oneKey:string=<string>aKeys[i],
+    for(let i=0,max=key_columns.length;i<max;i++) {
+        let oneKey:string=<string>key_columns[i],
             oneKeyParts:string[] = oneKey.split(':'),
             keyName:string = oneKeyParts[0],
             orderDir:string = oneKeyParts[1];

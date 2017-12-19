@@ -46,6 +46,11 @@ Functions which compare array elements need to be instructed how two elements ca
 
 If an array of property names is passed, a comparer function will be compiled automatically (via `compileC`) function.
 
+### Descending order
+
+If a ID name array is passed as `key_columns` params, the compiled function will compare elements in ascending order.
+We can change this behaviour by appending `:desc` to a ID name ... like so: ['cityID:desc','streetID:desc']
+
 ## `config<ArrayDiffConfig>` param
 
 We can modify the way the functions work, by providing an **config object**. All the options in the `config` object are optional.
