@@ -10,9 +10,9 @@ const _undef:any = void 0;
  * 
  * @param {Array<T>} leftA first array be compared 
  * @param {Array<K>} rightA second array be compared 
- * @param {CompareBy} key_columns list of key columns or comparer function, which should be used to compare/match elements
- * @param {ArrayDiffConfig} config [additional config parameters](#ArrayDiffConfig)
- * @returns {ArrayDiffResult} [comparisson results object](#ArrayDiffResult)
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param {ArrayDiffConfig} config [additional config parameters](#configarraydiffconfig-param)
+ * @returns {ArrayDiffResult} [comparisson results object](#arraydiffresult)
  */
 const compareA = <T,K>(leftA:Array<T>, rightA:Array<K>, key_columns:CompareBy, {unique=false,skipSort=false,sortLeftBy,sortRightBy,linkName,mapName,callbackFn=null}:ArrayDiffConfig={}):ArrayDiffResult<T,K> => {
 

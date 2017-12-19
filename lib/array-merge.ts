@@ -4,21 +4,20 @@ import diffA from './array-compare';
 import { defaults } from 'lodash';
 
 /**
- * Method merges new and changed elements into an existing array without duplication. Matching elements from two arrays are passed to a callback function if one is provided
+ * Merges new/changed elements into an existing array
+ * 
  * @param currData an array of "current" data elements
  * @param newData an array of changes and new data elements
- * @param sortKeys key name array or a comparer function, which will be used to compare elements of the two arrays
- * @param config additional config, which can contain a callback function (it's optional)
- * @returns {ArrayDiffResult} comparisson results
- * 
- * @description this sorts the given arrays, where it uses the `sortKeys` param. Also the `currData` will be concatinated with new elements from `newData` array
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param {ArrayDiffConfig} config [additional config parameters](#configarraydiffconfig-param)
+ * @returns {ArrayDiffResult} [comparisson results object](#arraydiffresult)
  */
-const mergeA = <T>(currData:Array<T>, newData:Array<T>, sortKeys:CompareBy, config?:ArrayDiffConfig):ArrayDiffResult<T,T> => {
+const mergeA = <T>(currData:Array<T>, newData:Array<T>, key_columns:CompareBy, config?:ArrayDiffConfig):ArrayDiffResult<T,T> => {
     
     // array elements are unique (at least should be)
     defaults(config, {unique:true});
 
-    let diff:ArrayDiffResult<T,T> = diffA(currData, newData, sortKeys, config);
+    let diff:ArrayDiffResult<T,T> = diffA(currData, newData, key_columns, config);
 
     // adding new elements to the `currData` array
     concat(currData, diff.rightDiff);
