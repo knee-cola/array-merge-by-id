@@ -67,8 +67,8 @@ The compiled function expects the compared values to be numeric</p>
 <dt><a href="#eachPair">eachPair(leftA, rightA, key_columns, callbackFn, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>Calls a callback method for each matched elements of provided arrays</p>
 </dd>
-<dt><a href="#sortOn">sortOn(source, aKeys)</a></dt>
-<dd><p>Sorts the given array based on the given key name array</p>
+<dt><a href="#sortOn">sortOn(source, key_columns)</a></dt>
+<dd><p>Sorts the given array based on the given key name array (or comparer function)</p>
 </dd>
 <dt><a href="#clear">clear(target)</a></dt>
 <dd><p>Removes all the elements of the given array</p>
@@ -76,11 +76,11 @@ The compiled function expects the compared values to be numeric</p>
 <dt><a href="#overwrite">overwrite(target, source)</a></dt>
 <dd><p>removes all the elements of <code>target</code> and replaces them with elements from <code>source</code></p>
 </dd>
-<dt><a href="#concat">concat(target, source)</a> ⇒</dt>
+<dt><a href="#concat">concat(target, source)</a> ⇒ <code>Array</code></dt>
 <dd><p>Does an in-place concatination of elements of the <code>source</code> array at the end of <code>target</code> array</p>
 </dd>
-<dt><a href="#stringifyIDs">stringifyIDs(data)</a></dt>
-<dd><p>this function is to be used for debugging and error dumping</p>
+<dt><a href="#stringifyIDs">stringifyIDs(data)</a> ⇒ <code>string</code></dt>
+<dd><p>Creates CSV containing values of all the keys ending with &quot;ID&quot;. It&#39;s usefull for debugging</p>
 </dd>
 </dl>
 
@@ -363,16 +363,37 @@ eachPair(cities, streets, ["cityID"], callbackFn);
 ```
 <a name="sortOn"></a>
 
-## sortOn(source, aKeys)
-Sorts the given array based on the given key name array
+## sortOn(source, key_columns)
+Sorts the given array based on the given key name array (or comparer function)
 
 **Kind**: global function  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | source | <code>Array</code> | array to be sorted |
-| aKeys |  | array of keys to be used in sorting the function OR a comparer function |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
 
+**Example**  
+```js
+let source = [{cityID:2},{cityID:3},{cityID:1}];
+
+// sorting in ASCENDING order
+sortOn(source, ["cityID"]);
+
+console.log(source); // will print [{cityID:1},{cityID:2},{cityID:3}];
+
+// sorting in DESCENDING order
+sortOn(source, ["cityID:desc"]);
+
+let streets = [
+   {cityID:22, streetID:1, name:'Elm Street'},
+   {cityID:44, streetID:2, name:'Downing St'},
+   {cityID:22, streetID:3, name:'Wall St'}
+];
+
+// using multiple keys
+sortOn(source, ["cityID", "streetID:desc"]);
+```
 <a name="clear"></a>
 
 ## clear(target)
@@ -384,6 +405,14 @@ Removes all the elements of the given array
 | --- | --- |
 | target | <code>Array</code> | 
 
+**Example**  
+```js
+let source = [{cityID:2},{cityID:3},{cityID:1}];
+
+clear(source);
+
+console.dir(source); // will print []
+```
 <a name="overwrite"></a>
 
 ## overwrite(target, source)
@@ -396,30 +425,57 @@ removes all the elements of `target` and replaces them with elements from `sourc
 | target | <code>Array</code> | array to be overwritten |
 | source | <code>Array</code> | array who's elements are to be places in `target` |
 
+**Example**  
+```js
+let target = [{cityID:100},{cityID:200}];
+let source = [{cityID:2},{cityID:3},{cityID:1}];
+
+overwrite(target, source);
+
+console.dir(target); // will print [{cityID:2},{cityID:3},{cityID:1}]
+```
 <a name="concat"></a>
 
-## concat(target, source) ⇒
+## concat(target, source) ⇒ <code>Array</code>
 Does an in-place concatination of elements of the `source` array at the end of `target` array
 
 **Kind**: global function  
-**Returns**: reference to the `target` array  
+**Returns**: <code>Array</code> - reference to the `target` array  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | target | <code>Array</code> | array which should receive new elements |
 | source | <code>Array</code> | array of elements which should be added at the end of the `target` array |
 
+**Example**  
+```js
+let target = [{cityID:100},{cityID:200}];
+let source = [{cityID:2},{cityID:3},{cityID:1}];
+
+concat(target, source);
+
+console.dir(target); // will print [{cityID:100},{cityID:200},{cityID:2},{cityID:3},{cityID:1}]
+```
 <a name="stringifyIDs"></a>
 
-## stringifyIDs(data)
-this function is to be used for debugging and error dumping
+## stringifyIDs(data) ⇒ <code>string</code>
+Creates CSV containing values of all the keys ending with "ID". It's usefull for debugging
 
 **Kind**: global function  
+**Returns**: <code>string</code> - CSV of key values  
 
-| Param | Description |
-| --- | --- |
-| data | object or array to be converted to CSV |
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>Object</code> | object or array to be converted to CSV |
 
+**Example**  
+```js
+let obj = { cityID: 11, streetID: 22, streetName: 'Elm Street' };
+
+let result = stringifyIDs(obj);
+
+console.log(result); // will print "cityID:11,streetID:22"
+```
 
 # Param types
 
