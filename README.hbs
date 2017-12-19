@@ -1,7 +1,75 @@
-[![view on npm](http://img.shields.io/npm/v/example.svg)](https://www.npmjs.org/package/example)
+# What's this?
+
+This is a set of functions specialized in comparing and merging arrays containig elements signed by unique set IDs.
+This is typically used in scenario in which client-side data-sets with changes comming from the an SQL server (server > client replication).
+
+The center stage of this toolkit is the `mergeA` function, which merges two arrays.
+
+Documentation for each of the functions can be found below ...
 
 {{>main}}
 
-* * *
+# Param types
 
-&copy; 1942-2016 Muhammad Ali
+## `key_columns<CompareBy>` param
+
+Functions which compare array elements need to be instructed how two elements can be compared. This can be done in two ways:
+
+* by passing a comparer function, which receives tow elements and returns a numeric value indicating the relation of the objects
+* by passing an array of ID property names, which should be compared to determin the relation of the two objects
+
+If an array of property names is passed, a comparer function will be compiled automatically (via `compileC`) function.
+
+## `config<ArrayDiffConfig>` param
+
+We can modify the way the functions work, by providing an **config object**. All the options in the `config` object are optional.
+
+Here's a list of available options:
+
+* [`sortLeftBy`](#sortLeftBy-and-sortRightBy) - how should the `leftA` array be sorted
+* [`sortRightBy`](#sortLeftBy-and-sortRightBy) - how should the `rightA` be sorted
+* `skipSort` - set it to `true` if arrays are not to be sorted
+* `unique` - set it to `true` if are all the array elements unique - it speeds up the algorithm
+* `linkName` - property assigned to the `rightA` elements, which should be pointing to the matching element in the `leftA`
+* `mapName` - property assigned to the `leftA` elements, containig array of all the matched elemens from the `rightA`
+* `callbackFn` - a callback function, which should be called for each of the matched element pairs
+
+## `sortLeftBy` and `sortRightBy`
+
+**Description:** defines how the arrays passed to the function should be sorted
+**Defaults to**: value passed as `key_columns` param
+**Expected value**: we can pass a function or an array of ID param names (see [`key_columns<CompareBy>`](#key_columns-CompareBy-param))
+
+In order to be more efficient, functions wich rely on comparing array elements will sort both of the given arrays.
+
+By default the functions use `key_columns` parameter to sort the arrays.
+
+This can be overriden by specifying a dedicated sorting order for each of the two arrays:
+* `config.sortLeftBy` = defines how the left array should be sorted (passed as the first param)
+* `config.sortRightBy` = defines how the right array should be sorted (passed as the second param)
+
+Sorting of an array can be disabled by assigning `null` to corresponding sort config param:
+```javascript
+{
+    sortLeftBy: null // don't sort the left array
+}
+```
+
+# Return Types
+## ``ArrayDiffResult``
+
+``ArrayDiffResult`` contains results of comparing two arrays. It has the following structure:
+```javascript
+{
+    // an array of elements from left array (`leftA` param), which have not
+    // been mathced with any of the elements of the right array (`rightA` param)
+    leftDiff:Array<T>,
+    // an array of elements from left array (`leftA` param), which have been mathced with at leas one element of the right array (`rightA` param)
+    leftCommon:Array<T>,
+    // an array of elements from right array (`rightA` param), which have not
+    // been mathced with any of the elements of the left array (`leftA` param)
+    rightCommon:Array<K>,
+    // an array of elements from right array (`rightA` param), which have been mathced with at leas one element of the left array (`leftA` param)
+    rightDiff:Array<K>
+}
+```

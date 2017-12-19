@@ -1,13 +1,17 @@
-[![view on npm](http://img.shields.io/npm/v/example.svg)](https://www.npmjs.org/package/example)
+# What's this?
+
+This is a set of functions specialized in comparing and merging arrays containig elements signed by unique set IDs.
+This is typically used in scenario in which client-side data-sets with changes comming from the an SQL server (server > client replication).
+
+The center stage of this toolkit is the `mergeA` function, which merges two arrays.
+
+Documentation for each of the functions can be found below ...
 
 ## Functions
 
 <dl>
-<dt><a href="#compareA">compareA(leftA, rightA¸second, key_columns, config)</a> ⇒ <code>ArrayDiffResult.&lt;T, K&gt;</code></dt>
-<dd><p>Both input arrays will be sorted in ascending manner (<code>key_columns</code> will be used).
-             This can be disabled by setting <code>sortLeftBy</code> and <code>sortRightBy</code> in config parameter.
-             Note2: since elements are compared by comparing key values, the two arrays can contain
-             totally different objects, which only share key values</p>
+<dt><a href="#compareA">compareA(leftA, rightA, key_columns, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
+<dd><p>Compares elements of two arrays and returns an object containing common elements and differences.</p>
 </dd>
 <dt><a href="#filterByKeys">filterByKeys(aSearch, key_columns, key_values, findFirstOnly)</a></dt>
 <dd><p>Extract array elements which match the given key values</p>
@@ -21,7 +25,7 @@
 <dt><a href="#linkA">linkA(parentA, childA, key_columns, linkName, config)</a></dt>
 <dd><p>this method sorts both of the provided arrays (this can be disabled via <code>config</code>)</p>
 </dd>
-<dt><a href="#mergeA">mergeA(currData, newData, sortKeys, config)</a></dt>
+<dt><a href="#mergeA">mergeA(currData, newData, sortKeys, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>this sorts the given arrays, where it uses the <code>sortKeys</code> param. Also the <code>currData</code> will be concatinated with new elements from <code>newData</code> array</p>
 </dd>
 <dt><a href="#purgeA">purgeA(aTarget, aHitList, key_columns, config)</a></dt>
@@ -36,7 +40,7 @@ This can be disabled by setting <code>skipSort</code> to <code>true</code>, or <
 precedes which. It bases the comparison on the the
 given list of numeric keys. The resulting function can be used in i.e. <code>Array.sort</code></p>
 </dd>
-<dt><a href="#eachPair">eachPair(leftA, rightA, key_columns, callbackFn, config)</a></dt>
+<dt><a href="#eachPair">eachPair(leftA, rightA, key_columns, callbackFn, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>Calls a callback method for each matched elements of two provided arrays</p>
 </dd>
 <dt><a href="#sortOn">sortOn(source, aKeys)</a></dt>
@@ -58,18 +62,18 @@ given list of numeric keys. The resulting function can be used in i.e. <code>Arr
 
 <a name="compareA"></a>
 
-## compareA(leftA, rightA¸second, key_columns, config) ⇒ <code>ArrayDiffResult.&lt;T, K&gt;</code>
-Both input arrays will be sorted in ascending manner (`key_columns` will be used).             This can be disabled by setting `sortLeftBy` and `sortRightBy` in config parameter.             Note2: since elements are compared by comparing key values, the two arrays can contain             totally different objects, which only share key values
+## compareA(leftA, rightA, key_columns, config) ⇒ <code>ArrayDiffResult</code>
+Compares elements of two arrays and returns an object containing common elements and differences.
 
 **Kind**: global function  
-**Returns**: <code>ArrayDiffResult.&lt;T, K&gt;</code> - comparisson results  
+**Returns**: <code>ArrayDiffResult</code> - [comparisson results object](#ArrayDiffResult)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | leftA | <code>Array.&lt;T&gt;</code> | first array be compared |
-| rightA¸second | <code>Array.&lt;K&gt;</code> | array be compared |
+| rightA | <code>Array.&lt;K&gt;</code> | second array be compared |
 | key_columns | <code>CompareBy</code> | list of key columns or comparer function, which should be used to compare/match elements |
-| config | <code>ArrayDiffConfig</code> | additional parameters |
+| config | <code>ArrayDiffConfig</code> | [additional config parameters](#ArrayDiffConfig) |
 
 <a name="filterByKeys"></a>
 
@@ -128,10 +132,11 @@ this method sorts both of the provided arrays (this can be disabled via `config`
 
 <a name="mergeA"></a>
 
-## mergeA(currData, newData, sortKeys, config)
+## mergeA(currData, newData, sortKeys, config) ⇒ <code>ArrayDiffResult</code>
 this sorts the given arrays, where it uses the `sortKeys` param. Also the `currData` will be concatinated with new elements from `newData` array
 
 **Kind**: global function  
+**Returns**: <code>ArrayDiffResult</code> - comparisson results  
 
 | Param | Description |
 | --- | --- |
@@ -143,7 +148,8 @@ this sorts the given arrays, where it uses the `sortKeys` param. Also the `currD
 <a name="purgeA"></a>
 
 ## purgeA(aTarget, aHitList, key_columns, config)
-Both input arrays will be sorted in ascending manner (`key_columns` will be used).This can be disabled by setting `skipSort` to `true`, or `sortLeftBy` and `sortRightBy` in `config`
+Both input arrays will be sorted in ascending manner (`key_columns` will be used).
+This can be disabled by setting `skipSort` to `true`, or `sortLeftBy` and `sortRightBy` in `config`
 
 **Kind**: global function  
 
@@ -170,7 +176,9 @@ Removes duplicates from an array and returns a new unique array
 <a name="compileC"></a>
 
 ## compileC(aKeys)
-Compiles a function which compares two data elements and detects whichprecedes which. It bases the comparison on the thegiven list of numeric keys. The resulting function can be used in i.e. `Array.sort`
+Compiles a function which compares two data elements and detects which
+precedes which. It bases the comparison on the the
+given list of numeric keys. The resulting function can be used in i.e. `Array.sort`
 
 **Kind**: global function  
 
@@ -180,10 +188,11 @@ Compiles a function which compares two data elements and detects whichprecedes 
 
 <a name="eachPair"></a>
 
-## eachPair(leftA, rightA, key_columns, callbackFn, config)
+## eachPair(leftA, rightA, key_columns, callbackFn, config) ⇒ <code>ArrayDiffResult</code>
 Calls a callback method for each matched elements of two provided arrays
 
 **Kind**: global function  
+**Returns**: <code>ArrayDiffResult</code> - comparisson results  
 
 | Param | Description |
 | --- | --- |
@@ -253,6 +262,67 @@ this function is to be used for debugging and error dumping
 | data | object or array to be converted to CSV |
 
 
-* * *
+# Param types
 
-&copy; 1942-2016 Muhammad Ali
+## `key_columns<CompareBy>` param
+
+Functions which compare array elements need to be instructed how two elements can be compared. This can be done in two ways:
+
+* by passing a comparer function, which receives tow elements and returns a numeric value indicating the relation of the objects
+* by passing an array of ID property names, which should be compared to determin the relation of the two objects
+
+If an array of property names is passed, a comparer function will be compiled automatically (via `compileC`) function.
+
+## `config<ArrayDiffConfig>` param
+
+We can modify the way the functions work, by providing an **config object**. All the options in the `config` object are optional.
+
+Here's a list of available options:
+
+* [`sortLeftBy`](#sortLeftBy-and-sortRightBy) - how should the `leftA` array be sorted
+* [`sortRightBy`](#sortLeftBy-and-sortRightBy) - how should the `rightA` be sorted
+* `skipSort` - set it to `true` if arrays are not to be sorted
+* `unique` - set it to `true` if are all the array elements unique - it speeds up the algorithm
+* `linkName` - property assigned to the `rightA` elements, which should be pointing to the matching element in the `leftA`
+* `mapName` - property assigned to the `leftA` elements, containig array of all the matched elemens from the `rightA`
+* `callbackFn` - a callback function, which should be called for each of the matched element pairs
+
+## `sortLeftBy` and `sortRightBy`
+
+**Description:** defines how the arrays passed to the function should be sorted
+**Defaults to**: value passed as `key_columns` param
+**Expected value**: we can pass a function or an array of ID param names (see [`key_columns<CompareBy>`](#key_columns-CompareBy-param))
+
+In order to be more efficient, functions wich rely on comparing array elements will sort both of the given arrays.
+
+By default the functions use `key_columns` parameter to sort the arrays.
+
+This can be overriden by specifying a dedicated sorting order for each of the two arrays:
+* `config.sortLeftBy` = defines how the left array should be sorted (passed as the first param)
+* `config.sortRightBy` = defines how the right array should be sorted (passed as the second param)
+
+Sorting of an array can be disabled by assigning `null` to corresponding sort config param:
+```javascript
+{
+    sortLeftBy: null // don't sort the left array
+}
+```
+
+# Return Types
+## ``ArrayDiffResult``
+
+``ArrayDiffResult`` contains results of comparing two arrays. It has the following structure:
+```javascript
+{
+    // an array of elements from left array (`leftA` param), which have not
+    // been mathced with any of the elements of the right array (`rightA` param)
+    leftDiff:Array<T>,
+    // an array of elements from left array (`leftA` param), which have been mathced with at leas one element of the right array (`rightA` param)
+    leftCommon:Array<T>,
+    // an array of elements from right array (`rightA` param), which have not
+    // been mathced with any of the elements of the left array (`leftA` param)
+    rightCommon:Array<K>,
+    // an array of elements from right array (`rightA` param), which have been mathced with at leas one element of the left array (`leftA` param)
+    rightDiff:Array<K>
+}
+```
