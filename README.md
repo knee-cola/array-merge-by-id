@@ -511,7 +511,7 @@ Here's a list of available options:
 
 **Description:** defines how the arrays passed to the function should be sorted
 **Defaults to**: value passed as `key_columns` param
-**Expected value**: we can pass a function or an array of ID param names (see [`key_columns<CompareBy>`](#key_columns-CompareBy-param))
+**Expected value**: we can pass a function or an array of ID param names (see [`key_columns<ompareBy>`](#key_columnscompareby-param))
 
 In order to be more efficient, functions wich rely on comparing array elements will sort both of the given arrays.
 
