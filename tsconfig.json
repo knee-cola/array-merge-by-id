@@ -10,7 +10,9 @@
         "sourceMap": true,
         "noLib": false,
         // create declaration files in output folder
-        "declaration": true
+        "declaration": true,
+        // put declaration files alomngside the compiled javascript
+        "declarationDir": "./"
     },
     "exclude": [
         "node_modules",
