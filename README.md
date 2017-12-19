@@ -25,8 +25,8 @@ Documentation for each of the functions can be found below ...
 <dt><a href="#linkA">linkA(parentA, childA, key_columns, linkName, config)</a></dt>
 <dd><p>this method sorts both of the provided arrays (this can be disabled via <code>config</code>)</p>
 </dd>
-<dt><a href="#mergeA">mergeA(currData, newData, sortKeys, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
-<dd><p>this sorts the given arrays, where it uses the <code>sortKeys</code> param. Also the <code>currData</code> will be concatinated with new elements from <code>newData</code> array</p>
+<dt><a href="#mergeA">mergeA(currData, newData, key_columns, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
+<dd><p>Merges new/changed elements into an existing array</p>
 </dd>
 <dt><a href="#purgeA">purgeA(aTarget, aHitList, key_columns, config)</a></dt>
 <dd><p>Both input arrays will be sorted in ascending manner (<code>key_columns</code> will be used).
@@ -41,7 +41,7 @@ precedes which. It bases the comparison on the the
 given list of numeric keys. The resulting function can be used in i.e. <code>Array.sort</code></p>
 </dd>
 <dt><a href="#eachPair">eachPair(leftA, rightA, key_columns, callbackFn, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
-<dd><p>Calls a callback method for each matched elements of two provided arrays</p>
+<dd><p>Calls a callback method for each matched elements of provided arrays</p>
 </dd>
 <dt><a href="#sortOn">sortOn(source, aKeys)</a></dt>
 <dd><p>Sorts the given array based on the given key name array</p>
@@ -66,14 +66,14 @@ given list of numeric keys. The resulting function can be used in i.e. <code>Arr
 Compares elements of two arrays and returns an object containing common elements and differences.
 
 **Kind**: global function  
-**Returns**: <code>ArrayDiffResult</code> - [comparisson results object](#ArrayDiffResult)  
+**Returns**: <code>ArrayDiffResult</code> - [comparisson results object](#arraydiffresult)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | leftA | <code>Array.&lt;T&gt;</code> | first array be compared |
 | rightA | <code>Array.&lt;K&gt;</code> | second array be compared |
-| key_columns | <code>CompareBy</code> | list of key columns or comparer function, which should be used to compare/match elements |
-| config | <code>ArrayDiffConfig</code> | [additional config parameters](#ArrayDiffConfig) |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| config | <code>ArrayDiffConfig</code> | [additional config parameters](#configarraydiffconfig-param) |
 
 <a name="filterByKeys"></a>
 
@@ -132,18 +132,18 @@ this method sorts both of the provided arrays (this can be disabled via `config`
 
 <a name="mergeA"></a>
 
-## mergeA(currData, newData, sortKeys, config) ⇒ <code>ArrayDiffResult</code>
-this sorts the given arrays, where it uses the `sortKeys` param. Also the `currData` will be concatinated with new elements from `newData` array
+## mergeA(currData, newData, key_columns, config) ⇒ <code>ArrayDiffResult</code>
+Merges new/changed elements into an existing array
 
 **Kind**: global function  
-**Returns**: <code>ArrayDiffResult</code> - comparisson results  
+**Returns**: <code>ArrayDiffResult</code> - [comparisson results object](#arraydiffresult)  
 
-| Param | Description |
-| --- | --- |
-| currData | an array of "current" data elements |
-| newData | an array of changes and new data elements |
-| sortKeys | key name array or a comparer function, which will be used to compare elements of the two arrays |
-| config | additional config, which can contain a callback function (it's optional) |
+| Param | Type | Description |
+| --- | --- | --- |
+| currData |  | an array of "current" data elements |
+| newData |  | an array of changes and new data elements |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| config | <code>ArrayDiffConfig</code> | [additional config parameters](#configarraydiffconfig-param) |
 
 <a name="purgeA"></a>
 
@@ -189,18 +189,18 @@ given list of numeric keys. The resulting function can be used in i.e. `Array.so
 <a name="eachPair"></a>
 
 ## eachPair(leftA, rightA, key_columns, callbackFn, config) ⇒ <code>ArrayDiffResult</code>
-Calls a callback method for each matched elements of two provided arrays
+Calls a callback method for each matched elements of provided arrays
 
 **Kind**: global function  
-**Returns**: <code>ArrayDiffResult</code> - comparisson results  
+**Returns**: <code>ArrayDiffResult</code> - [comparisson results object](#arraydiffresult)  
 
-| Param | Description |
-| --- | --- |
-| leftA | first array of elements |
-| rightA | second array of elements |
-| key_columns | list of key columns or comparer function, which should be used to compare/match elements |
-| callbackFn | function to be called for each of mathced element pairs |
-| config | additional parameters |
+| Param | Type | Description |
+| --- | --- | --- |
+| leftA |  | first array of elements |
+| rightA |  | second array of elements |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| callbackFn |  | function to be called for each of mathced element pairs |
+| config | <code>ArrayDiffConfig</code> | [additional config parameters](#configarraydiffconfig-param) |
 
 <a name="sortOn"></a>
 
