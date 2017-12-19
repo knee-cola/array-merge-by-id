@@ -11,7 +11,7 @@ import compileC from './comparer-compiler';
  * @returns {Array<T>} array of matched elements
  * 
  * @example
-* let streets = [{cityID:22, streetID:1}, {cityID:44, streetID:2}, {cityID:22, streetID:3}];
+ * let streets = [{cityID:22, streetID:1}, {cityID:44, streetID:2}, {cityID:22, streetID:3}];
  * 
  * let myCityStreets = filterByKeys(streets, ['cityID'], {cityID:22});
  * 

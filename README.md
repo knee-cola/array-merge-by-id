@@ -22,15 +22,14 @@ Documentation for each of the functions can be found below ...
 <dt><a href="#indexOf">indexOf(aSearch, key_columns, key_values)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns index of first matching element in the given array</p>
 </dd>
-<dt><a href="#linkA">linkA(parentA, childA, key_columns, linkName, config)</a></dt>
-<dd><p>this method sorts both of the provided arrays (this can be disabled via <code>config</code>)</p>
+<dt><a href="#linkA">linkA(parentA, childA, key_columns, linkName, config)</a> ⇒ <code>ArrayLinkResult</code></dt>
+<dd><p>Extends each child array element with a reference to it&#39;s parent element (in <code>parentA</code> array). Optionally it can extend parane element with a map of it&#39;s children.</p>
 </dd>
 <dt><a href="#mergeA">mergeA(currData, newData, key_columns, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>Merges new/changed elements into an existing array</p>
 </dd>
-<dt><a href="#purgeA">purgeA(aTarget, aHitList, key_columns, config)</a></dt>
-<dd><p>Both input arrays will be sorted in ascending manner (<code>key_columns</code> will be used).
-This can be disabled by setting <code>skipSort</code> to <code>true</code>, or <code>sortLeftBy</code> and <code>sortRightBy</code> in <code>config</code></p>
+<dt><a href="#purgeA">purgeA(aTarget, aHitList, key_columns, config)</a> ⇒ <code>Array.&lt;T&gt;</code></dt>
+<dd><p>Removes elements indicated by a hit list from the provided array</p>
 </dd>
 <dt><a href="#uniqueA">uniqueA(source, key_columns, config)</a></dt>
 <dd><p>Removes duplicates from an array and returns a new unique array</p>
@@ -66,14 +65,14 @@ given list of numeric keys. The resulting function can be used in i.e. <code>Arr
 Compares elements of two arrays and returns an object containing common elements and differences.
 
 **Kind**: global function  
-**Returns**: <code>ArrayDiffResult</code> - [comparisson results object](#arraydiffresult)  
+**Returns**: <code>ArrayDiffResult</code> - comparisson results object](#arraydiffresult)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | leftA | <code>Array.&lt;T&gt;</code> | first array be compared |
 | rightA | <code>Array.&lt;K&gt;</code> | second array be compared |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| config | <code>ArrayDiffConfig</code> | [additional config parameters](#configarraydiffconfig-param) |
+| config | <code>ArrayDiffConfig</code> | (optional) [additional config parameters](#configarraydiffconfig-param) |
 
 <a name="filterByKeys"></a>
 
@@ -144,19 +143,29 @@ console.log(streetIndex); // will print 1
 ```
 <a name="linkA"></a>
 
-## linkA(parentA, childA, key_columns, linkName, config)
-this method sorts both of the provided arrays (this can be disabled via `config`)
+## linkA(parentA, childA, key_columns, linkName, config) ⇒ <code>ArrayLinkResult</code>
+Extends each child array element with a reference to it's parent element (in `parentA` array). Optionally it can extend parane element with a map of it's children.
 
 **Kind**: global function  
+**Returns**: <code>ArrayLinkResult</code> - [comparisson results object](#arraylinkresult)  
 
-| Param | Default | Description |
-| --- | --- | --- |
-| parentA |  | array containting parent elements |
-| childA |  | array containing child elements |
-| key_columns |  | key column names or comparer function, which will be used to match elements of two arrays |
-| linkName | <code>parent</code> | name of the property which should be assigned a reference to parent element (defaults to 'parent') |
-| config |  | detailed configuration, containing |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| parentA |  |  | array containting parent elements |
+| childA |  |  | array containing child elements |
+| key_columns | <code>CompareBy</code> |  | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| linkName | <code>string</code> | <code>&quot;parent&quot;</code> | (optional) name of the property which should be assigned a reference to parent element (defaults to 'parent') |
+| config | <code>ArrayDiffConfig</code> |  | (optional) [additional config parameters](#configarraydiffconfig-param) |
 
+**Example**  
+```js
+let cities = [ {cityID:22, cityName:'New York'}, {cityID:44, cityName:'London'} ];
+let streets = [{cityID:22, streetID:1}, {cityID:44, streetID:2}, {cityID:22, streetID:3}];
+
+let result = linkA(cities, streets, ['cityID'], 'city')
+
+console.dir(result); // will output {cityID:22,streetID:1,city:<reference to New York>}, {cityID:44,streetID:2,city:<reference to London>}, {cityID:22,streetID:3,city:<reference to New York>}
+```
 <a name="mergeA"></a>
 
 ## mergeA(currData, newData, key_columns, config) ⇒ <code>ArrayDiffResult</code>
@@ -170,23 +179,44 @@ Merges new/changed elements into an existing array
 | currData |  | an array of "current" data elements |
 | newData |  | an array of changes and new data elements |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| config | <code>ArrayDiffConfig</code> | [additional config parameters](#configarraydiffconfig-param) |
+| config | <code>ArrayDiffConfig</code> | (optional) [additional config parameters](#configarraydiffconfig-param) |
 
+**Example**  
+```js
+let currData = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'Londonnnnn'} ];
+let newData = [ {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ]; // London is fixed, Rome is added
+
+// function which applies changes to an existing element
+let mergeFn = (element, changes) => { element.cityName = changes.cityName; };
+
+let result = mergeA(currData, newData, ['cityID'], { callbackFn: mergeFn });
+
+console.dir(currData); // will print [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ];
+```
 <a name="purgeA"></a>
 
-## purgeA(aTarget, aHitList, key_columns, config)
-Both input arrays will be sorted in ascending manner (`key_columns` will be used).
-This can be disabled by setting `skipSort` to `true`, or `sortLeftBy` and `sortRightBy` in `config`
+## purgeA(aTarget, aHitList, key_columns, config) ⇒ <code>Array.&lt;T&gt;</code>
+Removes elements indicated by a hit list from the provided array
 
 **Kind**: global function  
+**Returns**: <code>Array.&lt;T&gt;</code> - an array of removed elements  
 
-| Param | Description |
-| --- | --- |
-| aTarget | array to be purged |
-| aHitList | hit list - indicates which element from `aTarget` should be removed |
-| key_columns | list of key columns or comparer function, which should be used to compare/match elements |
-| config | additional config parameters |
+| Param | Type | Description |
+| --- | --- | --- |
+| aTarget |  | array to be purged |
+| aHitList |  | hit list - indicates which element from `aTarget` should be removed |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| config | <code>ArrayPurgeConfig</code> | (optional) [additional config parameters](#configarraypurgeconfig-param) |
 
+**Example**  
+```js
+let targetA = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ];
+let hitList = [ { cityID: 1 }, { cityID: 3 } ];
+
+let result = purgeA(targetA, hitList, ['cityID']);
+
+console.log(targetA); // will print [ {cityID:1, cityName:'New York'} ];
+```
 <a name="uniqueA"></a>
 
 ## uniqueA(source, key_columns, config)
@@ -334,6 +364,19 @@ Sorting of an array can be disabled by assigning `null` to corresponding sort co
     sortLeftBy: null // don't sort the left array
 }
 ```
+
+## `config<ArrayPurgeConfig>` param
+
+This config si very similar to `ArrayDiffConfig` param type. The following params are the same as in `ArrayDiffConfig`:
+* `sortLeftBy`
+* `sortRightBy`
+* `skipSort`
+
+The following params are unique to this param type:
+
+* `sortBy` = how should both arrays be sorted
+* `mapRemoved` - flag indicating should removed elements be mapped and returned
+* `matchMulti` - can an element from the hit list array be matched with multiple elements from the target array (defaults to `false`)
 
 # Return Types
 ## ``ArrayDiffResult``

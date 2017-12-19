@@ -36,7 +36,7 @@ type ArrayLinkConfig = ArrayDiffConfig & {
 }
 
 type ArrayPurgeConfig = {
-    /** (optional) key columns or a function to be used for comparing elements of two arrays. If not set it defaults to `key_columns` param */
+    /** (optional) key columns or a function to be used for sorting the two arrays. If not set it defaults to `key_columns` param */
     sortBy?:CompareBy,
 
     /** (optional) function or column list to be used while sorting the `leftA` (defaults to `key_columns`). If a `null` value is passed, the left will not be sorted. */

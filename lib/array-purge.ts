@@ -5,13 +5,21 @@ import compileC from './comparer-compiler';
 import { ArrayPurgeConfig, CompareBy, Map, ComparerFn } from './lib-types';
 
 /**
- * Removes elements of a provided array indicated by a hit list array (ones which can be matched with an element from a hit list get removed)
+ * Removes elements indicated by a hit list from the provided array
+ * 
  * @param aTarget array to be purged
  * @param aHitList hit list - indicates which element from `aTarget` should be removed
- * @param key_columns list of key columns or comparer function, which should be used to compare/match elements
- * @param config additional config parameters
- * @description Both input arrays will be sorted in ascending manner (`key_columns` will be used).
- * This can be disabled by setting `skipSort` to `true`, or `sortLeftBy` and `sortRightBy` in `config`
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param {ArrayPurgeConfig} config (optional) [additional config parameters](#configarraypurgeconfig-param)
+ * @returns {Array<T>} an array of removed elements
+ * 
+ * @example
+ * let targetA = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ];
+ * let hitList = [ { cityID: 1 }, { cityID: 3 } ];
+ * 
+ * let result = purgeA(targetA, hitList, ['cityID']);
+ * 
+ * console.log(targetA); // will print [ {cityID:1, cityName:'New York'} ];
  */
 function purgeA<T>(aTarget:Array<T>, aHitList:Array<Map>, key_columns:CompareBy, {sortBy,sortLeftBy,sortRightBy,skipSort=false,mapRemoved=false,matchMulti=false}:ArrayPurgeConfig={}):Array<T> {
     

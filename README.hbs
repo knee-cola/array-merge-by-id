@@ -55,6 +55,19 @@ Sorting of an array can be disabled by assigning `null` to corresponding sort co
 }
 ```
 
+## `config<ArrayPurgeConfig>` param
+
+This config si very similar to `ArrayDiffConfig` param type. The following params are the same as in `ArrayDiffConfig`:
+* `sortLeftBy`
+* `sortRightBy`
+* `skipSort`
+
+The following params are unique to this param type:
+
+* `sortBy` = how should both arrays be sorted
+* `mapRemoved` - flag indicating should removed elements be mapped and returned
+* `matchMulti` - can an element from the hit list array be matched with multiple elements from the target array (defaults to `false`)
+
 # Return Types
 ## ``ArrayDiffResult``
 
