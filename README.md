@@ -356,7 +356,7 @@ Here's a list of available options:
 * `mapName` - property assigned to the `leftA` elements, containig array of all the matched elemens from the `rightA`
 * `callbackFn` - a callback function, which should be called for each of the matched element pairs
 
-## `sortLeftBy` and `sortRightBy`
+### `sortLeftBy` and `sortRightBy`
 
 **Description:** defines how the arrays passed to the function should be sorted
 **Defaults to**: value passed as `key_columns` param
@@ -392,21 +392,10 @@ The following params are unique to this param type:
 
 ## `config<ArrayUniqueConfig>` param
 
-This config si very similar to `ArrayDiffConfig` param type. The following params are the same as in `ArrayDiffConfig`:
-* `sortLeftBy`
-* `sortRightBy`
-* `skipSort`
-
-The following params are unique to this param type:
-
-* `sortBy` = how should both arrays be sorted
-* `mapRemoved` - flag indicating should removed elements be mapped and returned
-* `matchMulti` - can an element from the hit list array be matched with multiple elements from the target array (defaults to `false`)
-
-# Return Types
-## `ArrayDiffResult`
 * `skipSort` - set it to `true` if arrays are not to be sorted
 * `elFreq` - output param - an array in which element frequency is to be recorded (see the example given in the [`uniqueA` method description](#uniqueA))
+
+# Return Types
 
 ``ArrayDiffResult`` contains results of comparing two arrays. It has the following structure:
 ```javascript
