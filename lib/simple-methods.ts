@@ -5,7 +5,7 @@ const _undef:any = void 0;
 
 /**
  * Sorts the given array based on the given key name array
- * @param source array to be sorted
+ * @param {Array} source array to be sorted
  * @param aKeys array of keys to be used in sorting the function OR a comparer function
  */
 const sortOn = (source:Array<Map>, aKeys:CompareBy):Array<Map> => {
@@ -14,7 +14,7 @@ const sortOn = (source:Array<Map>, aKeys:CompareBy):Array<Map> => {
 
 /**
  * Removes all the elements of the given array
- * @param target 
+ * @param {Array} target 
  */
 function clear<T>(target:Array<T>):Array<T> {
 
@@ -25,8 +25,8 @@ function clear<T>(target:Array<T>):Array<T> {
 
 /**
  * Does an in-place overwritte of an array
- * @param target array to be overwritten
- * @param source array who's elements are to be places in `target`
+ * @param {Array} target array to be overwritten
+ * @param {Array} source array who's elements are to be places in `target`
  * @description removes all the elements of `target` and replaces them with elements from `source`
  */
 function overwrite(target:Array<any>, source:Array<any>):Array<any> {
@@ -40,8 +40,8 @@ function overwrite(target:Array<any>, source:Array<any>):Array<any> {
 
 /**
 * Does an in-place concatination of elements of the `source` array at the end of `target` array
-* @param target array which should receive new elements
-* @param source array of elements which should be added at the end of the `target` array
+* @param {Array} target array which should receive new elements
+* @param {Array} source array of elements which should be added at the end of the `target` array
 * @returns reference to the `target` array
  */
 function concat<T>(target:Array<T>, source:Array<any>):Array<T> {

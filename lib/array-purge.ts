@@ -7,11 +7,11 @@ import { ArrayPurgeConfig, CompareBy, Map, ComparerFn } from './lib-types';
 /**
  * Removes elements indicated by a hit list from the provided array
  * 
- * @param aTarget array to be purged
- * @param aHitList hit list - indicates which element from `aTarget` should be removed
+ * @param {Array} aTarget array to be purged
+ * @param {Array} aHitList hit list - indicates which element from `aTarget` should be removed
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
  * @param {ArrayPurgeConfig} config (optional) [additional config parameters](#configarraypurgeconfig-param)
- * @returns {Array<T>} an array of removed elements
+ * @returns {Array} an array of removed elements
  * 
  * @example
  * let targetA = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ];

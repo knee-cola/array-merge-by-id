@@ -6,8 +6,8 @@ import compareA from './array-compare';
 /**
  * Extends each child array element with a reference to it's parent element (in `parentA` array). Optionally it can extend parane element with a map of it's children.
  * 
- * @param parentA array containting parent elements
- * @param childA array containing child elements
+ * @param {Array} parentA array containting parent elements
+ * @param {Array} childA array containing child elements
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
  * @param {string} linkName (optional) name of the property which should be assigned a reference to parent element (defaults to 'parent')
  * @param {ArrayDiffConfig} config (optional) [additional config parameters](#configarraydiffconfig-param)

@@ -6,8 +6,8 @@ import { defaults } from 'lodash';
 /**
  * Merges new/changed elements into an existing array
  * 
- * @param currData an array of "current" data elements
- * @param newData an array of changes and new data elements
+ * @param {Array} currData an array of "current" data elements
+ * @param {Array} newData an array of changes and new data elements
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
  * @param {ArrayDiffConfig} config (optional) [additional config parameters](#configarraydiffconfig-param)
  * @returns {ArrayDiffResult} [comparisson results object](#arraydiffresult)
