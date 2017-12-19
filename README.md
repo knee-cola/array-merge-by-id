@@ -1,9 +1,34 @@
 # What's this?
 
-This is a set of functions specialized in comparing and merging arrays containig elements signed by unique set IDs.
+This is a set of functions specialized in comparing and merging arrays of elements signed by unique set of IDs.
 This is typically used in scenario in which client-side data-sets with changes comming from the an SQL server (server > client replication).
 
-The center stage of this toolkit is the `mergeA` function, which merges two arrays.
+The center stage of this toolkit is the `mergeA` function, which merges two arrays. The following example demonstrates of applying changes (merging, replicating) to an existing data array:
+
+```javascript
+let currData = [
+    {cityID:1, cityName:'New York'},
+    {cityID:2, cityName:'Londonnnnn'} // there's a typo here
+];
+
+let newData = [
+    {cityID:2, cityName:'London'}, // typo is fixed
+    {cityID:3, cityName:'Rome' } // new city is added
+];
+
+// function which applies changes to an existing element
+let mergeFn = (element, changes) => { element.cityName = changes.cityName; };
+
+let result = mergeA(currData, newData, ['cityID'], { callbackFn: mergeFn });
+
+// the following above statement will print
+//  [
+//     {cityID:1, cityName:'New York'},
+//     {cityID:2, cityName:'London'},
+//     {cityID:3, cityName:'Rome' }
+//  ];
+console.dir(currData);
+```
 
 Documentation for each of the functions can be found below ...
 
