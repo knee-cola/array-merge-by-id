@@ -2,11 +2,20 @@ import { CompareBy, ComparerFn, Map } from './lib-types';
 import compileC from './comparer-compiler';
 
 /**
- * Extract array elements which match the given key values
+ * Extract all the array elements which match the given key values (or are indicated by a comparer function)
+ * 
  * @param aSearch array to be searched
- * @param key_columns list of key columns or comparer function, which should be used to compare/match elements
- * @param key_values key values to be found
- * @param findFirstOnly should only the first matched element be returned (defaults to `false`)
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param key_values (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it
+ * @param findFirstOnly (optional) should only the first matched element be returned (defaults to `false`)
+ * @returns array of matched elements
+ * 
+ * @example
+* let streets = [{cityID:22, streetID:1}, {cityID:44, streetID:2}, {cityID:22, streetID:3}];
+ * 
+ * let myCityStreets = filterByKeys(streets, ['cityID'], {cityID:22});
+ * 
+ * console.dir(myCityStreets); // will output [{cityID:22, streetID:1}, {cityID:22, streetID:3}]
  */
 const filterByKeys = <T>(aSearch:Array<T>, key_columns:CompareBy, key_values:Map=null, findFirstOnly:boolean=false):Array<T> => {
 
