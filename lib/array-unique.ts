@@ -3,10 +3,19 @@ import { ArrayUniqueConfig, CompareBy } from './lib-types';
 import { sortOn } from './simple-methods';
 
 /**
- * Removes duplicates from an array and returns a new unique array
+ * Copies unique elements from `source` to a new array, which is then returned
+ * 
  * @param source source array - which may contain duplicates
- * @param key_columns list of key columns or comparer function, which should be used to compare/match elements
- * @param config additional config parameters
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param {ArrayUniqueConfig} config (optional) additional config parameters (see [ArrayUniqueConfig](#arrayuniqueconfig))
+ * @returns array of unique elements
+ * 
+ * @example
+ * let source = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:2, cityName:'London'} ];
+ * 
+ * let result = uniqueA(source, ["cityID"]);
+ * 
+ * console.dir(result); // will print [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'} ]
  */
 const uniqueA = <T>(source:Array<T>, key_columns:CompareBy, {skipSort=false, elFreq=[]}:ArrayUniqueConfig={}):Array<T> => {
     

@@ -31,8 +31,8 @@ Documentation for each of the functions can be found below ...
 <dt><a href="#purgeA">purgeA(aTarget, aHitList, key_columns, config)</a> ⇒ <code>Array.&lt;T&gt;</code></dt>
 <dd><p>Removes elements indicated by a hit list from the provided array</p>
 </dd>
-<dt><a href="#uniqueA">uniqueA(source, key_columns, config)</a></dt>
-<dd><p>Removes duplicates from an array and returns a new unique array</p>
+<dt><a href="#uniqueA">uniqueA(source, key_columns, config)</a> ⇒</dt>
+<dd><p>Copies unique elements from <code>source</code> to a new array, which is then returned</p>
 </dd>
 <dt><a href="#compileC">compileC(aKeys)</a></dt>
 <dd><p>Compiles a function which compares two data elements and detects which
@@ -213,23 +213,35 @@ Removes elements indicated by a hit list from the provided array
 let targetA = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ];
 let hitList = [ { cityID: 1 }, { cityID: 3 } ];
 
-let result = purgeA(targetA, hitList, ['cityID']);
+let elFreq = [];
 
-console.log(targetA); // will print [ {cityID:1, cityName:'New York'} ];
+let result = purgeA(targetA, hitList, ['cityID'] { elFreq: elFreq });
+
+console.dir(targetA); // will print [ {cityID:1, cityName:'New York'} ];
+console.dir(elFreq); // will print [1, 2] - it means that the first array element was found once, while the second twice
 ```
 <a name="uniqueA"></a>
 
-## uniqueA(source, key_columns, config)
-Removes duplicates from an array and returns a new unique array
+## uniqueA(source, key_columns, config) ⇒
+Copies unique elements from `source` to a new array, which is then returned
 
 **Kind**: global function  
+**Returns**: array of unique elements  
 
-| Param | Description |
-| --- | --- |
-| source | source array - which may contain duplicates |
-| key_columns | list of key columns or comparer function, which should be used to compare/match elements |
-| config | additional config parameters |
+| Param | Type | Description |
+| --- | --- | --- |
+| source |  | source array - which may contain duplicates |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| config | <code>ArrayUniqueConfig</code> | (optional) additional config parameters (see [ArrayUniqueConfig](#arrayuniqueconfig)) |
 
+**Example**  
+```js
+let source = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:2, cityName:'London'} ];
+
+let result = uniqueA(source, ["cityID"]);
+
+console.dir(result); // will print [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'} ]
+```
 <a name="compileC"></a>
 
 ## compileC(aKeys)
@@ -378,8 +390,23 @@ The following params are unique to this param type:
 * `mapRemoved` - flag indicating should removed elements be mapped and returned
 * `matchMulti` - can an element from the hit list array be matched with multiple elements from the target array (defaults to `false`)
 
+## `config<ArrayUniqueConfig>` param
+
+This config si very similar to `ArrayDiffConfig` param type. The following params are the same as in `ArrayDiffConfig`:
+* `sortLeftBy`
+* `sortRightBy`
+* `skipSort`
+
+The following params are unique to this param type:
+
+* `sortBy` = how should both arrays be sorted
+* `mapRemoved` - flag indicating should removed elements be mapped and returned
+* `matchMulti` - can an element from the hit list array be matched with multiple elements from the target array (defaults to `false`)
+
 # Return Types
-## ``ArrayDiffResult``
+## `ArrayDiffResult`
+* `skipSort` - set it to `true` if arrays are not to be sorted
+* `elFreq` - output param - an array in which element frequency is to be recorded (see the example given in the [`uniqueA` method description](#uniqueA))
 
 ``ArrayDiffResult`` contains results of comparing two arrays. It has the following structure:
 ```javascript

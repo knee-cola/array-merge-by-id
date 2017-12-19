@@ -17,9 +17,13 @@ import { ArrayPurgeConfig, CompareBy, Map, ComparerFn } from './lib-types';
  * let targetA = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ];
  * let hitList = [ { cityID: 1 }, { cityID: 3 } ];
  * 
- * let result = purgeA(targetA, hitList, ['cityID']);
+ * let elFreq = [];
  * 
- * console.log(targetA); // will print [ {cityID:1, cityName:'New York'} ];
+ * let result = purgeA(targetA, hitList, ['cityID'] { elFreq: elFreq });
+ * 
+ * console.dir(targetA); // will print [ {cityID:1, cityName:'New York'} ];
+ * console.dir(elFreq); // will print [1, 2] - it means that the first array element was found once, while the second twice
+ * 
  */
 function purgeA<T>(aTarget:Array<T>, aHitList:Array<Map>, key_columns:CompareBy, {sortBy,sortLeftBy,sortRightBy,skipSort=false,mapRemoved=false,matchMulti=false}:ArrayPurgeConfig={}):Array<T> {
     
