@@ -396,7 +396,7 @@ The following params are unique to this param type:
 * `elFreq` - output param - an array in which element frequency is to be recorded (see the example given in the [`uniqueA` method description](#uniqueA))
 
 # Return Types
-
+## `ArrayDiffResult`
 ``ArrayDiffResult`` contains results of comparing two arrays. It has the following structure:
 ```javascript
 {
