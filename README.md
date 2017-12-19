@@ -195,7 +195,7 @@ console.log(streetIndex); // will print 1
 Extends each child array element with a reference to it's parent element (in `parentA` array). Optionally it can extend parane element with a map of it's children.
 
 **Kind**: global function  
-**Returns**: <code>ArrayLinkResult</code> - [comparisson results object](#arraylinkresult)  
+**Returns**: <code>ArrayLinkResult</code> - [linking results object](#arraylinkresult)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -499,8 +499,8 @@ We can modify the way the functions work, by providing an **config object**. All
 
 Here's a list of available options:
 
-* [`sortLeftBy`](#sortLeftBy-and-sortRightBy) - how should the `leftA` array be sorted
-* [`sortRightBy`](#sortLeftBy-and-sortRightBy) - how should the `rightA` be sorted
+* [`sortLeftBy`](#sortleftby-and-sortrightby) - how should the `leftA` array be sorted
+* [`sortRightBy`](#sortleftby-and-sortrightby) - how should the `rightA` be sorted
 * `skipSort` - set it to `true` if arrays are not to be sorted
 * `unique` - set it to `true` if are all the array elements unique - it speeds up the algorithm
 * `linkName` - property assigned to the `rightA` elements, which should be pointing to the matching element in the `leftA`

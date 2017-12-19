@@ -11,7 +11,7 @@ import compareA from './array-compare';
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
  * @param {string} linkName (optional) name of the property which should be assigned a reference to parent element (defaults to 'parent')
  * @param {ArrayDiffConfig} config (optional) [additional config parameters](#configarraydiffconfig-param)
- * @returns {ArrayLinkResult} [comparisson results object](#arraylinkresult)
+ * @returns {ArrayLinkResult} [linking results object](#arraylinkresult)
  * 
  * @example
  * let cities = [ {cityID:22, cityName:'New York'}, {cityID:44, cityName:'London'} ];
