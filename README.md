@@ -31,7 +31,7 @@ Documentation for each of the functions can be found below ...
 <dt><a href="#purgeA">purgeA(aTarget, aHitList, key_columns, config)</a> ⇒ <code>Array.&lt;T&gt;</code></dt>
 <dd><p>Removes elements indicated by a hit list from the provided array</p>
 </dd>
-<dt><a href="#uniqueA">uniqueA(source, key_columns, config)</a> ⇒</dt>
+<dt><a href="#uniqueA">uniqueA(source, key_columns, config)</a> ⇒ <code>Array.&lt;T&gt;</code></dt>
 <dd><p>Copies unique elements from <code>source</code> to a new array, which is then returned</p>
 </dd>
 <dt><a href="#compileC">compileC(aKeys)</a></dt>
@@ -222,11 +222,11 @@ console.dir(elFreq); // will print [1, 2] - it means that the first array elemen
 ```
 <a name="uniqueA"></a>
 
-## uniqueA(source, key_columns, config) ⇒
+## uniqueA(source, key_columns, config) ⇒ <code>Array.&lt;T&gt;</code>
 Copies unique elements from `source` to a new array, which is then returned
 
 **Kind**: global function  
-**Returns**: array of unique elements  
+**Returns**: <code>Array.&lt;T&gt;</code> - array of unique elements  
 
 | Param | Type | Description |
 | --- | --- | --- |
