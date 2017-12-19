@@ -1,14 +1,15 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const srcDir = './lib/';
-const destDir = 'dist';
+const destDir = path.resolve(__dirname + '/dist/');
 
 module.exports = {
     entry: {
         "index": srcDir+"index.ts",
     },
     output: {
-        path: path.resolve(__dirname + '/' + destDir),
+        path: destDir,
         filename: 'index.js',
         library: 'array-merge-by-id',
         libraryTarget: 'umd'
@@ -38,5 +39,11 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    externals: {
+        'lodash': 'lodash'
+    },
+    plugins: [
+        new CleanWebpackPlugin(destDir)
+    ]
 };
