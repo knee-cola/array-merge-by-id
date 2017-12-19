@@ -9,8 +9,7 @@
     "test": "jest",
     "testw": "jest --watch",
     "tsc": "tsc",
-    "docc": "jsdoc2md --template ./README.hbs ./dist/array-compare.js > README.md",
-    "doc": "jsdoc2md --template ./README.hbs ./dist/{array-compare,array-filter,array-link,array-merge,array-purge,stringify-ids,array-unique,comparer-compiler,each-pair,simple-methods,array-index-of,array-find}.js > README.md"
+    "doc": "tsc && jsdoc2md --template ./README.hbs ./dist/{array-compare,array-filter,array-link,array-merge,array-purge,stringify-ids,array-unique,comparer-compiler,each-pair,simple-methods,array-index-of,array-find}.js > README.md"
   },
   "repository": {
     "type": "git",
