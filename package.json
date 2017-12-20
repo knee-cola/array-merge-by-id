@@ -1,6 +1,6 @@
 {
   "name": "array-merge-by-id",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "array merging and comparing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,12 +10,12 @@
     "dev": "webpack --verbose",
     "test": "jest",
     "testw": "jest --watch",
-    "tsc": "tsc --outDir ./dist/ --declaration false --sourceMap false",
+    "tsc": "tsc --project tsconfig.doc.json",
     "doc": "npm run clean && npm run tsc && jsdoc2md --template ./README.hbs ./dist/{array-compare,array-merge,array-link,array-filter,each-pair,array-purge,array-unique,array-index-of,array-find,stringify-ids,comparer-compiler,simple-methods}.js > README.md"
   },
   "repository": {
     "type": "git",
-    "url": "https://knee-cola.github.com/array-merge-by-id"
+    "url": "https://github.com/knee-cola/array-merge-by-id"
   },
   "keywords": [
     "array",
