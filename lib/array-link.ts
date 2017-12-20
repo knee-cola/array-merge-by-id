@@ -19,8 +19,9 @@ import compareA from './array-compare';
  * 
  * let result = linkA(cities, streets, ['cityID'], 'city')
  * 
- * console.dir(result); // will output {cityID:22,streetID:1,city:<reference to New York>}, {cityID:44,streetID:2,city:<reference to London>}, {cityID:22,streetID:3,city:<reference to New York>}
- * 
+ * console.dir(result); // will output [ {cityID:22,streetID:1,city:<reference to New York>},
+ *                      //               {cityID:44,streetID:2,city:<reference to London>},
+ *                      //               {cityID:22,streetID:3,city:<reference to New York>}]
  */
 function linkA<T,K>(parentA:Array<T>, childA:Array<K>, key_columns:CompareBy, linkName:string='parent', config:ArrayLinkConfig={purge_orphans: false}):ArrayLinkResult<T,K> {
 

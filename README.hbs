@@ -163,14 +163,16 @@ The following params are unique to this param type:
 ```javascript
 {
     // an array of elements from left array (`leftA` param), which have not
-    // been mathced with any of the elements of the right array (`rightA` param)
+    // been matched with any of the elements of the right array (`rightA` param)
     leftDiff:Array<T>,
-    // an array of elements from left array (`leftA` param), which have been mathced with at leas one element of the right array (`rightA` param)
+    // an array of elements from left array (`leftA` param),
+    // which have been matched with at leas one element of the right array (`rightA` param)
     leftCommon:Array<T>,
     // an array of elements from right array (`rightA` param), which have not
-    // been mathced with any of the elements of the left array (`leftA` param)
+    // been matched with any of the elements of the left array (`leftA` param)
     rightCommon:Array<K>,
-    // an array of elements from right array (`rightA` param), which have been mathced with at leas one element of the left array (`leftA` param)
+    // an array of elements from right array (`rightA` param),
+    // which have been matched with at leas one element of the left array (`leftA` param)
     rightDiff:Array<K>
 }
 ```

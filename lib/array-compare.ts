@@ -29,10 +29,10 @@ const _undef:any = void 0;
  * 
  * // statment below will print:
  * // {
- * //   leftDiff: [{cityID:1, cityName:'New York', weather:"windy"}],         <= New York doesn't exist in the `rightA`
- * //   leftCommon: [{cityID:2, cityName:'London', weather:"raining"}],       <= London does exist in `rightA`
- * //   rightDiff: [{cityID:3, cityName:'Moscow', weather:"snowing"}],        <= Moscow exists in `leftA`
- * //   rightCommon: [{cityID:2, cityName:'London', weather:"thunderstorm"}]  <= London exists in `leftA`
+ * //   leftDiff: [{cityID:1, cityName:'New York', weather:"windy"}],        <= New York doesn't exist in the `rightA`
+ * //   leftCommon: [{cityID:2, cityName:'London', weather:"raining"}],      <= London does exist in `rightA`
+ * //   rightDiff: [{cityID:3, cityName:'Moscow', weather:"snowing"}],       <= Moscow exists in `leftA`
+ * //   rightCommon: [{cityID:2, cityName:'London', weather:"thunderstorm"}] <= London exists in `leftA`
  * // }
  * console.dir(diff);
  */

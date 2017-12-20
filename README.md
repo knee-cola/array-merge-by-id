@@ -122,10 +122,10 @@ let diff = compareA(leftA, rightA, ["cityID"]);
 
 // statment below will print:
 // {
-//   leftDiff: [{cityID:1, cityName:'New York', weather:"windy"}],         <= New York doesn't exist in the `rightA`
-//   leftCommon: [{cityID:2, cityName:'London', weather:"raining"}],       <= London does exist in `rightA`
-//   rightDiff: [{cityID:3, cityName:'Moscow', weather:"snowing"}],        <= Moscow exists in `leftA`
-//   rightCommon: [{cityID:2, cityName:'London', weather:"thunderstorm"}]  <= London exists in `leftA`
+//   leftDiff: [{cityID:1, cityName:'New York', weather:"windy"}],        <= New York doesn't exist in the `rightA`
+//   leftCommon: [{cityID:2, cityName:'London', weather:"raining"}],      <= London does exist in `rightA`
+//   rightDiff: [{cityID:3, cityName:'Moscow', weather:"snowing"}],       <= Moscow exists in `leftA`
+//   rightCommon: [{cityID:2, cityName:'London', weather:"thunderstorm"}] <= London exists in `leftA`
 // }
 console.dir(diff);
 ```
@@ -219,7 +219,9 @@ let streets = [{cityID:22, streetID:1}, {cityID:44, streetID:2}, {cityID:22, str
 
 let result = linkA(cities, streets, ['cityID'], 'city')
 
-console.dir(result); // will output {cityID:22,streetID:1,city:<reference to New York>}, {cityID:44,streetID:2,city:<reference to London>}, {cityID:22,streetID:3,city:<reference to New York>}
+console.dir(result); // will output [ {cityID:22,streetID:1,city:<reference to New York>},
+                     //               {cityID:44,streetID:2,city:<reference to London>},
+                     //               {cityID:22,streetID:3,city:<reference to New York>}]
 ```
 <a name="mergeA"></a>
 
@@ -238,15 +240,24 @@ Merges new/changed elements into an existing array
 
 **Example**  
 ```js
-let currData = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'Londonnnnn'} ];
-let newData = [ {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ]; // London is fixed, Rome is added
+let currData = [
+  {cityID:1, cityName:'New York'},
+  {cityID:2, cityName:'Londonnnnn'}
+];
+
+let newData = [
+  {cityID:2, cityName:'London'}, // London is fixed
+  {cityID:3, cityName:'Rome' }   // Rome is added
+];
 
 // function which applies changes to an existing element
 let mergeFn = (element, changes) => { element.cityName = changes.cityName; };
 
 let result = mergeA(currData, newData, ['cityID'], { callbackFn: mergeFn });
 
-console.dir(currData); // will print [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ];
+console.dir(currData); // will print [ {cityID:1, cityName:'New York'},
+                       //              {cityID:2, cityName:'London'},
+                       //              {cityID:3, cityName:'Rome' } ];
 ```
 <a name="purgeA"></a>
 
@@ -265,7 +276,12 @@ Removes elements indicated by a hit list from the provided array
 
 **Example**  
 ```js
-let targetA = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'London'}, {cityID:3, cityName:'Rome' } ];
+let targetA = [
+  {cityID:1, cityName:'New York'},
+  {cityID:2, cityName:'London'},
+  {cityID:3, cityName:'Rome' }
+];
+
 let hitList = [ { cityID: 1 }, { cityID: 3 } ];
 
 let elFreq = [];
@@ -273,7 +289,8 @@ let elFreq = [];
 let result = purgeA(targetA, hitList, ['cityID'] { elFreq: elFreq });
 
 console.dir(targetA); // will print [ {cityID:1, cityName:'New York'} ];
-console.dir(elFreq); // will print [1, 2] - it means that the first array element was found once, while the second twice
+console.dir(elFreq); // will print [1, 2] - it means that the first array
+                     // element was found once, while the second twice
 ```
 <a name="uniqueA"></a>
 
@@ -355,7 +372,12 @@ Calls a callback method for each matched elements of provided arrays
 **Example**  
 ```js
 let cities = [ {cityID:22, name:'New York'}, {cityID:44, name:'London'} ];
-let streets = [{cityID:22, streetID:1, name:'Elm Street'}, {cityID:22, streetID:3, name:'Wall St'}, {cityID:44, streetID:2, name:'Downing St'}];
+
+let streets = [
+  {cityID:22, streetID:1, name:'Elm Street'},
+  {cityID:22, streetID:3, name:'Wall St'},
+  {cityID:44, streetID:2, name:'Downing St'}
+];
 
 let callbackFn = (city, street) => {
   console.log(street.name + ' ' + city.name)
@@ -605,14 +627,16 @@ The following params are unique to this param type:
 ```javascript
 {
     // an array of elements from left array (`leftA` param), which have not
-    // been mathced with any of the elements of the right array (`rightA` param)
+    // been matched with any of the elements of the right array (`rightA` param)
     leftDiff:Array<T>,
-    // an array of elements from left array (`leftA` param), which have been mathced with at leas one element of the right array (`rightA` param)
+    // an array of elements from left array (`leftA` param),
+    // which have been matched with at leas one element of the right array (`rightA` param)
     leftCommon:Array<T>,
     // an array of elements from right array (`rightA` param), which have not
-    // been mathced with any of the elements of the left array (`leftA` param)
+    // been matched with any of the elements of the left array (`leftA` param)
     rightCommon:Array<K>,
-    // an array of elements from right array (`rightA` param), which have been mathced with at leas one element of the left array (`leftA` param)
+    // an array of elements from right array (`rightA` param),
+    // which have been matched with at leas one element of the left array (`leftA` param)
     rightDiff:Array<K>
 }
 ```

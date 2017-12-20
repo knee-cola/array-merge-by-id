@@ -14,7 +14,12 @@ import { ArrayDiffResult, ArrayDiffConfig, CompareBy, CallbackFn } from './lib-t
  * 
  * @example
  * let cities = [ {cityID:22, name:'New York'}, {cityID:44, name:'London'} ];
- * let streets = [{cityID:22, streetID:1, name:'Elm Street'}, {cityID:22, streetID:3, name:'Wall St'}, {cityID:44, streetID:2, name:'Downing St'}];
+ * 
+ * let streets = [
+ *   {cityID:22, streetID:1, name:'Elm Street'},
+ *   {cityID:22, streetID:3, name:'Wall St'},
+ *   {cityID:44, streetID:2, name:'Downing St'}
+ * ];
  * 
  * let callbackFn = (city, street) => {
  *   console.log(street.name + ' ' + city.name)
