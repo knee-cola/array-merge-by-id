@@ -73,13 +73,13 @@ The compiled function expects the compared values to be numeric</p>
 <dt><a href="#eachPair">eachPair(leftA, rightA, key_columns, callbackFn, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
 <dd><p>Calls a callback method for each matched elements of provided arrays</p>
 </dd>
-<dt><a href="#sortOn">sortOn(source, key_columns)</a></dt>
+<dt><a href="#sortOn">sortOn(source, key_columns)</a> ⇒ <code>Array</code></dt>
 <dd><p>Sorts the given array based on the given key name array (or comparer function)</p>
 </dd>
-<dt><a href="#clear">clear(target)</a></dt>
+<dt><a href="#clear">clear(target)</a> ⇒ <code>Array</code></dt>
 <dd><p>Removes all the elements of the given array</p>
 </dd>
-<dt><a href="#overwrite">overwrite(target, source)</a></dt>
+<dt><a href="#overwrite">overwrite(target, source)</a> ⇒ <code>Array</code></dt>
 <dd><p>removes all the elements of <code>target</code> and replaces them with elements from <code>source</code></p>
 </dd>
 <dt><a href="#concat">concat(target, source)</a> ⇒ <code>Array</code></dt>
@@ -391,10 +391,11 @@ eachPair(cities, streets, ["cityID"], callbackFn);
 ```
 <a name="sortOn"></a>
 
-## sortOn(source, key_columns)
+## sortOn(source, key_columns) ⇒ <code>Array</code>
 Sorts the given array based on the given key name array (or comparer function)
 
 **Kind**: global function  
+**Returns**: <code>Array</code> - array passed via `source` param  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -424,14 +425,15 @@ sortOn(source, ["cityID", "streetID:desc"]);
 ```
 <a name="clear"></a>
 
-## clear(target)
+## clear(target) ⇒ <code>Array</code>
 Removes all the elements of the given array
 
 **Kind**: global function  
+**Returns**: <code>Array</code> - array passed via `target` param  
 
-| Param | Type |
-| --- | --- |
-| target | <code>Array</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| target | <code>Array</code> | array to be cleared |
 
 **Example**  
 ```js
@@ -443,10 +445,11 @@ console.dir(source); // will print []
 ```
 <a name="overwrite"></a>
 
-## overwrite(target, source)
+## overwrite(target, source) ⇒ <code>Array</code>
 removes all the elements of `target` and replaces them with elements from `source`
 
 **Kind**: global function  
+**Returns**: <code>Array</code> - array passed via `target` param  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -468,7 +471,7 @@ console.dir(target); // will print [{cityID:2},{cityID:3},{cityID:1}]
 Does an in-place concatination of elements of the `source` array at the end of `target` array
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - reference to the `target` array  
+**Returns**: <code>Array</code> - array passed via `target` param  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -582,7 +585,9 @@ Here's a list of available options:
 ### `sortLeftBy` and `sortRightBy`
 
 **Description:** defines how the arrays passed to the function should be sorted
+
 **Defaults to**: value passed as `key_columns` param
+
 **Expected value**: we can pass a function or an array of ID param names (see [CompareBy](#compareby))
 
 In order to be more efficient, functions which rely on comparing array elements will sort both of the given arrays.
