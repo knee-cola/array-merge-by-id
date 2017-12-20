@@ -7,9 +7,9 @@ import { ArrayDiffResult, ArrayDiffConfig, CompareBy, CallbackFn } from './lib-t
  * 
  * @param {Array} leftA first array of elements
  * @param {Array} rightA second array of elements
- * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
  * @param {Function} callbackFn function to be called for each of mathced element pairs
- * @param {ArrayDiffConfig} config (optional) [additional config parameters](#configarraydiffconfig-param)
+ * @param {ArrayDiffConfig} config (optional) additional config parameters (see [ArrayDiffConfig](#arraydiffconfig))
  * @returns {ArrayDiffResult} [comparisson results object](#arraydiffresult)
  * 
  * @example

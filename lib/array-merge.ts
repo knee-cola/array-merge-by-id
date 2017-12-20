@@ -8,9 +8,9 @@ import { defaults } from 'lodash';
  * 
  * @param {Array} currData an array of "current" data elements
  * @param {Array} newData an array of changes and new data elements
- * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
- * @param {ArrayDiffConfig} config (optional) [additional config parameters](#configarraydiffconfig-param)
- * @returns {ArrayDiffResult} [comparisson results object](#arraydiffresult)
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
+ * @param {ArrayDiffConfig} config (optional) additional config parameters (see [ArrayDiffConfig](#arraydiffconfig))
+ * @returns {ArrayDiffResult} comparisson results object (see [ArrayDiffResult](#arraydiffresult))
  * 
  * @example
  * let currData = [ {cityID:1, cityName:'New York'}, {cityID:2, cityName:'Londonnnnn'} ];

@@ -7,7 +7,7 @@ const _undef:any = void 0;
  * Sorts the given array based on the given key name array (or comparer function)
  * 
  * @param {Array} source array to be sorted
- * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
  * 
  * @example
  * let source = [{cityID:2},{cityID:3},{cityID:1}];

@@ -6,7 +6,7 @@ import { sortOn } from './simple-methods';
  * Copies unique elements from `source` to a new array, which is then returned
  * 
  * @param {Array} source source array - which may contain duplicates
- * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
  * @param {ArrayUniqueConfig} config (optional) additional config parameters (see [ArrayUniqueConfig](#arrayuniqueconfig))
  * @returns {Array} array of unique elements
  * 

@@ -1,7 +1,7 @@
 # What's this?
 
 This is a set of functions specialized in comparing and merging arrays of elements signed by unique set of IDs.
-This is typically used in scenario in which client-side data-sets with changes comming from the an SQL server (server > client replication).
+This is typically used in scenario in which client-side data-sets with changes coming from the an SQL server (server > client replication).
 
 The center stage of this toolkit is the `mergeA` function, which merges two arrays. The following snippet demonstrates how this function can apply (merging, replicating) changes to an existing data array:
 
@@ -44,21 +44,65 @@ npm i --save array-merge-by-id
 
 # Param types
 
-## `key_columns<CompareBy>` param
+## CompareBy
 
 Functions which compare array elements need to be instructed how two elements can be compared. This can be done in two ways:
 
-* by passing a comparer function, which receives tow elements and returns a numeric value indicating the relation of the objects
 * by passing an array of ID property names, which should be compared to determin the relation of the two objects
+* by passing a comparer function, which receives tow elements and returns a numeric value indicating the relation of the objects
 
 If an array of property names is passed, a comparer function will be compiled automatically (via `compileC`) function.
+
+The following snippet shows how comparisson can be defined via a comparer function:
+
+```javascript
+let leftA = [
+  {cityID:1, cityName:'New York', weather:"windy"},
+  {cityID:2, cityName:'London',   weather:"raining"}
+];
+
+let rightA = [
+  {cityID:2, cityName:'London', weather:"thunderstorm"},
+  {cityID:3, cityName:'Moscow', weather:"snowing"}
+];
+
+const comparerFn = (leftEl, rightEl) => {
+    if(leftEl.cityID===rightEl.cityID) {
+        return(0);
+    }
+    if(leftEl.cityID<rightEl.cityID) {
+        return(1);
+    }
+    return(0);
+}
+
+let diff = compareA(leftA, rightA, comparerFn);
+```
+
+The previous example can be re-written to define comparrison via property name array instead of comparer function:
+
+```javascript
+let leftA = [
+  {cityID:1, cityName:'New York', weather:"windy"},
+  {cityID:2, cityName:'London',   weather:"raining"}
+];
+
+let rightA = [
+  {cityID:2, cityName:'London', weather:"thunderstorm"},
+  {cityID:3, cityName:'Moscow', weather:"snowing"}
+];
+
+let diff = compareA(leftA, rightA, ["cityID"]);
+```
 
 ### Descending order
 
 If a ID name array is passed as `key_columns` params, the compiled function will compare elements in ascending order.
 We can change this behaviour by appending `:desc` to a ID name ... like so: ['cityID:desc','streetID:desc']
 
-## `config<ArrayDiffConfig>` param
+See an example given for the [`sortOn` function](#sortonsource-key_columns).
+
+## ArrayDiffConfig
 
 We can modify the way the functions work, by providing an **config object**. All the options in the `config` object are optional.
 
@@ -76,9 +120,9 @@ Here's a list of available options:
 
 **Description:** defines how the arrays passed to the function should be sorted
 **Defaults to**: value passed as `key_columns` param
-**Expected value**: we can pass a function or an array of ID param names (see [`key_columns<ompareBy>`](#key_columnscompareby-param))
+**Expected value**: we can pass a function or an array of ID param names (see [CompareBy](#compareby))
 
-In order to be more efficient, functions wich rely on comparing array elements will sort both of the given arrays.
+In order to be more efficient, functions which rely on comparing array elements will sort both of the given arrays.
 
 By default the functions use `key_columns` parameter to sort the arrays.
 
@@ -93,9 +137,9 @@ Sorting of an array can be disabled by assigning `null` to corresponding sort co
 }
 ```
 
-## `config<ArrayPurgeConfig>` param
+## ArrayPurgeConfig
 
-This config si very similar to `ArrayDiffConfig` param type. The following params are the same as in `ArrayDiffConfig`:
+This config si very similar to `ArrayDiffConfig` param type. The following params are the same as in [`ArrayDiffConfig`](#arraydiffconfig):
 * `sortLeftBy`
 * `sortRightBy`
 * `skipSort`
@@ -106,13 +150,15 @@ The following params are unique to this param type:
 * `mapRemoved` - flag indicating should removed elements be mapped and returned
 * `matchMulti` - can an element from the hit list array be matched with multiple elements from the target array (defaults to `false`)
 
-## `config<ArrayUniqueConfig>` param
+## ArrayUniqueConfig
 
 * `skipSort` - set it to `true` if arrays are not to be sorted
 * `elFreq` - output param - an array in which element frequency is to be recorded (see the example given in the [`uniqueA` method description](#uniqueA))
 
 # Return Types
+
 ## `ArrayDiffResult`
+
 ``ArrayDiffResult`` contains results of comparing two arrays. It has the following structure:
 ```javascript
 {

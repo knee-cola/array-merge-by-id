@@ -1,7 +1,7 @@
 # What's this?
 
 This is a set of functions specialized in comparing and merging arrays of elements signed by unique set of IDs.
-This is typically used in scenario in which client-side data-sets with changes comming from the an SQL server (server > client replication).
+This is typically used in scenario in which client-side data-sets with changes coming from the an SQL server (server > client replication).
 
 The center stage of this toolkit is the `mergeA` function, which merges two arrays. The following snippet demonstrates how this function can apply (merging, replicating) changes to an existing data array:
 
@@ -44,7 +44,7 @@ npm i --save array-merge-by-id
 
 <dl>
 <dt><a href="#compareA">compareA(leftA, rightA, key_columns, config)</a> ⇒ <code>ArrayDiffResult</code></dt>
-<dd><p>Compares elements of two arrays and returns an object containing common elements and differences.</p>
+<dd><p>Compares elements of two arrays and returns an object containing common elements and differences (see <a href="#arraydiffresult">comparisson results object</a>).</p>
 </dd>
 <dt><a href="#filterByKeys">filterByKeys(aSearch, key_columns, key_values, findFirstOnly)</a> ⇒ <code>Array</code></dt>
 <dd><p>Extract all the array elements which match the given key values (or are indicated by a comparer function)</p>
@@ -94,17 +94,17 @@ The compiled function expects the compared values to be numeric</p>
 <a name="compareA"></a>
 
 ## compareA(leftA, rightA, key_columns, config) ⇒ <code>ArrayDiffResult</code>
-Compares elements of two arrays and returns an object containing common elements and differences.
+Compares elements of two arrays and returns an object containing common elements and differences (see [comparisson results object](#arraydiffresult)).
 
 **Kind**: global function  
-**Returns**: <code>ArrayDiffResult</code> - comparisson results object](#arraydiffresult)  
+**Returns**: <code>ArrayDiffResult</code> - comparisson results object (see [ArrayDiffResult](#arraydiffresult))  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | leftA | <code>Array.&lt;T&gt;</code> | first array be compared |
 | rightA | <code>Array.&lt;K&gt;</code> | second array be compared |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| config | <code>ArrayDiffConfig</code> | (optional) [additional config parameters](#configarraydiffconfig-param) |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
+| config | <code>ArrayDiffConfig</code> | (optional) additional config parameters (see [ArrayDiffConfig](#arraydiffconfig)) |
 
 **Example**  
 ```js
@@ -140,7 +140,7 @@ Extract all the array elements which match the given key values (or are indicate
 | Param | Type | Description |
 | --- | --- | --- |
 | aSearch | <code>Array</code> | array to be searched |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
 | key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it |
 | findFirstOnly | <code>boolean</code> | (optional) should only the first matched element be returned (defaults to `false`) |
 
@@ -163,8 +163,8 @@ Returns the first matched element of the given type
 | Param | Type | Description |
 | --- | --- | --- |
 | aSearch | <code>Array</code> | array to be searched |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
+| key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it |
 
 **Example**  
 ```js
@@ -185,8 +185,8 @@ Returns index of first matching element in the given array
 | Param | Type | Description |
 | --- | --- | --- |
 | aSearch | <code>Array</code> | array to be searched |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
+| key_values | <code>Map</code> | (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it |
 
 **Example**  
 ```js
@@ -202,15 +202,15 @@ console.log(streetIndex); // will print 1
 Extends each child array element with a reference to it's parent element (in `parentA` array). Optionally it can extend parane element with a map of it's children.
 
 **Kind**: global function  
-**Returns**: <code>ArrayLinkResult</code> - [linking results object](#arraylinkresult)  
+**Returns**: <code>ArrayLinkResult</code> - linking results object(see [ArrayLinkResult](#arraylinkresult))  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | parentA | <code>Array</code> |  | array containting parent elements |
 | childA | <code>Array</code> |  | array containing child elements |
-| key_columns | <code>CompareBy</code> |  | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| key_columns | <code>CompareBy</code> |  | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
 | linkName | <code>string</code> | <code>&quot;parent&quot;</code> | (optional) name of the property which should be assigned a reference to parent element (defaults to 'parent') |
-| config | <code>ArrayDiffConfig</code> |  | (optional) [additional config parameters](#configarraydiffconfig-param) |
+| config | <code>ArrayDiffConfig</code> |  | (optional) additional config parameters (see [ArrayDiffConfig](#arraydiffconfig)) |
 
 **Example**  
 ```js
@@ -227,14 +227,14 @@ console.dir(result); // will output {cityID:22,streetID:1,city:<reference to New
 Merges new/changed elements into an existing array
 
 **Kind**: global function  
-**Returns**: <code>ArrayDiffResult</code> - [comparisson results object](#arraydiffresult)  
+**Returns**: <code>ArrayDiffResult</code> - comparisson results object (see [ArrayDiffResult](#arraydiffresult))  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | currData | <code>Array</code> | an array of "current" data elements |
 | newData | <code>Array</code> | an array of changes and new data elements |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| config | <code>ArrayDiffConfig</code> | (optional) [additional config parameters](#configarraydiffconfig-param) |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
+| config | <code>ArrayDiffConfig</code> | (optional) additional config parameters (see [ArrayDiffConfig](#arraydiffconfig)) |
 
 **Example**  
 ```js
@@ -260,8 +260,8 @@ Removes elements indicated by a hit list from the provided array
 | --- | --- | --- |
 | aTarget | <code>Array</code> | array to be purged |
 | aHitList | <code>Array</code> | hit list - indicates which element from `aTarget` should be removed |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
-| config | <code>ArrayPurgeConfig</code> | (optional) [additional config parameters](#configarraypurgeconfig-param) |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
+| config | <code>ArrayPurgeConfig</code> | (optional) additional config parameters (see [ArrayPurgeConfig](#arraypurgeconfig)) |
 
 **Example**  
 ```js
@@ -286,7 +286,7 @@ Copies unique elements from `source` to a new array, which is then returned
 | Param | Type | Description |
 | --- | --- | --- |
 | source | <code>Array</code> | source array - which may contain duplicates |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
 | config | <code>ArrayUniqueConfig</code> | (optional) additional config parameters (see [ArrayUniqueConfig](#arrayuniqueconfig)) |
 
 **Example**  
@@ -308,7 +308,7 @@ The compiled function expects the compared values to be numeric
 
 | Param | Type | Description |
 | --- | --- | --- |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
 
 **Example**  
 ```js
@@ -348,9 +348,9 @@ Calls a callback method for each matched elements of provided arrays
 | --- | --- | --- |
 | leftA | <code>Array</code> | first array of elements |
 | rightA | <code>Array</code> | second array of elements |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
 | callbackFn | <code>function</code> | function to be called for each of mathced element pairs |
-| config | <code>ArrayDiffConfig</code> | (optional) [additional config parameters](#configarraydiffconfig-param) |
+| config | <code>ArrayDiffConfig</code> | (optional) additional config parameters (see [ArrayDiffConfig](#arraydiffconfig)) |
 
 **Example**  
 ```js
@@ -378,7 +378,7 @@ Sorts the given array based on the given key name array (or comparer function)
 | Param | Type | Description |
 | --- | --- | --- |
 | source | <code>Array</code> | array to be sorted |
-| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param)) |
+| key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
 
 **Example**  
 ```js
@@ -486,21 +486,65 @@ console.log(result); // will print "cityID:11,streetID:22"
 
 # Param types
 
-## `key_columns<CompareBy>` param
+## CompareBy
 
 Functions which compare array elements need to be instructed how two elements can be compared. This can be done in two ways:
 
-* by passing a comparer function, which receives tow elements and returns a numeric value indicating the relation of the objects
 * by passing an array of ID property names, which should be compared to determin the relation of the two objects
+* by passing a comparer function, which receives tow elements and returns a numeric value indicating the relation of the objects
 
 If an array of property names is passed, a comparer function will be compiled automatically (via `compileC`) function.
+
+The following snippet shows how comparisson can be defined via a comparer function:
+
+```javascript
+let leftA = [
+  {cityID:1, cityName:'New York', weather:"windy"},
+  {cityID:2, cityName:'London',   weather:"raining"}
+];
+
+let rightA = [
+  {cityID:2, cityName:'London', weather:"thunderstorm"},
+  {cityID:3, cityName:'Moscow', weather:"snowing"}
+];
+
+const comparerFn = (leftEl, rightEl) => {
+    if(leftEl.cityID===rightEl.cityID) {
+        return(0);
+    }
+    if(leftEl.cityID<rightEl.cityID) {
+        return(1);
+    }
+    return(0);
+}
+
+let diff = compareA(leftA, rightA, comparerFn);
+```
+
+The previous example can be re-written to define comparrison via property name array instead of comparer function:
+
+```javascript
+let leftA = [
+  {cityID:1, cityName:'New York', weather:"windy"},
+  {cityID:2, cityName:'London',   weather:"raining"}
+];
+
+let rightA = [
+  {cityID:2, cityName:'London', weather:"thunderstorm"},
+  {cityID:3, cityName:'Moscow', weather:"snowing"}
+];
+
+let diff = compareA(leftA, rightA, ["cityID"]);
+```
 
 ### Descending order
 
 If a ID name array is passed as `key_columns` params, the compiled function will compare elements in ascending order.
 We can change this behaviour by appending `:desc` to a ID name ... like so: ['cityID:desc','streetID:desc']
 
-## `config<ArrayDiffConfig>` param
+See an example given for the [`sortOn` function](#sortonsource-key_columns).
+
+## ArrayDiffConfig
 
 We can modify the way the functions work, by providing an **config object**. All the options in the `config` object are optional.
 
@@ -518,9 +562,9 @@ Here's a list of available options:
 
 **Description:** defines how the arrays passed to the function should be sorted
 **Defaults to**: value passed as `key_columns` param
-**Expected value**: we can pass a function or an array of ID param names (see [`key_columns<ompareBy>`](#key_columnscompareby-param))
+**Expected value**: we can pass a function or an array of ID param names (see [CompareBy](#compareby))
 
-In order to be more efficient, functions wich rely on comparing array elements will sort both of the given arrays.
+In order to be more efficient, functions which rely on comparing array elements will sort both of the given arrays.
 
 By default the functions use `key_columns` parameter to sort the arrays.
 
@@ -535,9 +579,9 @@ Sorting of an array can be disabled by assigning `null` to corresponding sort co
 }
 ```
 
-## `config<ArrayPurgeConfig>` param
+## ArrayPurgeConfig
 
-This config si very similar to `ArrayDiffConfig` param type. The following params are the same as in `ArrayDiffConfig`:
+This config si very similar to `ArrayDiffConfig` param type. The following params are the same as in [`ArrayDiffConfig`](#arraydiffconfig):
 * `sortLeftBy`
 * `sortRightBy`
 * `skipSort`
@@ -548,13 +592,15 @@ The following params are unique to this param type:
 * `mapRemoved` - flag indicating should removed elements be mapped and returned
 * `matchMulti` - can an element from the hit list array be matched with multiple elements from the target array (defaults to `false`)
 
-## `config<ArrayUniqueConfig>` param
+## ArrayUniqueConfig
 
 * `skipSort` - set it to `true` if arrays are not to be sorted
 * `elFreq` - output param - an array in which element frequency is to be recorded (see the example given in the [`uniqueA` method description](#uniqueA))
 
 # Return Types
+
 ## `ArrayDiffResult`
+
 ``ArrayDiffResult`` contains results of comparing two arrays. It has the following structure:
 ```javascript
 {

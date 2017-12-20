@@ -5,7 +5,7 @@ import compileC from './comparer-compiler';
  * Extract all the array elements which match the given key values (or are indicated by a comparer function)
  * 
  * @param {Array} aSearch array to be searched
- * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
  * @param {Map} key_values (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it
  * @param {boolean} findFirstOnly (optional) should only the first matched element be returned (defaults to `false`)
  * @returns {Array} array of matched elements

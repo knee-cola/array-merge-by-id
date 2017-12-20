@@ -8,7 +8,7 @@ const _comparer_cache:{ [key:string]:ComparerFn; } = {};
 /**
  * Compiles and returns a function which compares two data elements and detects which comes before which in an orderd list.
  * The compiled function expects the compared values to be numeric
- * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
  * @returns {Function} compiled function
  * @example
  * // function for an ASCENDING order

@@ -9,8 +9,8 @@ import { ArrayPurgeConfig, CompareBy, Map, ComparerFn } from './lib-types';
  * 
  * @param {Array} aTarget array to be purged
  * @param {Array} aHitList hit list - indicates which element from `aTarget` should be removed
- * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
- * @param {ArrayPurgeConfig} config (optional) [additional config parameters](#configarraypurgeconfig-param)
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
+ * @param {ArrayPurgeConfig} config (optional) additional config parameters (see [ArrayPurgeConfig](#arraypurgeconfig))
  * @returns {Array} an array of removed elements
  * 
  * @example

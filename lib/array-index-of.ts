@@ -5,8 +5,8 @@ import { CompareBy } from "./lib-types"
  * Returns index of first matching element in the given array
  * 
  * @param {Array} aSearch array to be searched
- * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [`key_columns<CompareBy>` param](#key_columnscompareby-param))
- * @param {Map} key_values (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it  * @example
+ * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
+ * @param {Map} key_values (optional) an object which should be matched with an element from `aSearch` array - it's optional because `key_columns` param can contain a function which doesn't need it
  * @returns {number} element index
 * 
  * @example
