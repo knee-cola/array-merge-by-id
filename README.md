@@ -3,36 +3,6 @@
 This is a set of functions specialized in comparing and merging arrays of elements signed by unique set of IDs.
 This is typically used in scenario in which client-side data-sets with changes coming from the an SQL server (server > client replication).
 
-The center stage of this toolkit is the `mergeA` function, which merges two arrays. The following snippet demonstrates how this function can apply (merging, replicating) changes to an existing data array:
-
-```javascript
-let currData = [
-    {cityID:1, cityName:'New York'},
-    {cityID:2, cityName:'Londonnnnn'} // there's a typo here
-];
-
-let newData = [
-    {cityID:2, cityName:'London'}, // typo is fixed
-    {cityID:3, cityName:'Rome' } // new city is added
-];
-
-// function which applies changes to an existing element
-// - it will be called for each matched pair of elements
-let mergeFn = (element, changes) => { element.cityName = changes.cityName; };
-
-let result = mergeA(currData, newData, ['cityID'], { callbackFn: mergeFn });
-
-// the following statement will print
-//  [
-//     {cityID:1, cityName:'New York'},
-//     {cityID:2, cityName:'London'},    <= name is fixed
-//     {cityID:3, cityName:'Rome' }      <= new city is added
-//  ];
-console.dir(currData);
-```
-
-Documentation with examples for each of the included functions can be found below ...
-
 # How to install?
 
 Simply open up a terminal, go to your project directory and run:
