@@ -31,11 +31,7 @@ describe('`mergeA`', () => {
 
     it('`mergeA` should append new elements at the end of the current array', () => {
 
-        console.log(newA);
-        
         let diff = mergeA(currA, newA, ['ID']);
-        
-        console.log(diff);
 
         expect(currA).toEqual([
                 currA_src[0],
