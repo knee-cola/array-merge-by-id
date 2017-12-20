@@ -14,7 +14,7 @@ npm i --save array-merge-by-id
 
 ## Functions by category
 
-Comparing, merging, linking elementsk of two arrays:
+Comparing, merging, linking elements of two arrays:
 
 * [`mergeA`](#mergeA) - merges new/changed elements into an existing array
 * [`compareA`](#compareA) - compares elements of two arrays and returns an object containing common elements and differences
