@@ -3,16 +3,14 @@
 This is a set of functions specialized in comparing and merging arrays of elements signed by unique set of IDs.
 This is typically used in scenario in which client-side data-sets with changes coming from the an SQL server (server > client replication).
 
-# How to install?
+## How to install?
 
 Simply open up a terminal, go to your project directory and run:
 ```
 npm i --save array-merge-by-id
 ```
 
-# API
-
-## Functions by category
+# Functions by category
 
 Comparing, merging, linking elements of two arrays:
 
