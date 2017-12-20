@@ -31,7 +31,7 @@ let result = mergeA(currData, newData, ['cityID'], { callbackFn: mergeFn });
 console.dir(currData);
 ```
 
-Documentation for each of the functions can be found below ...
+Documentation with examples for each of the included functions can be found below ...
 
 # How to install?
 
@@ -39,6 +39,37 @@ Simply open up a terminal, go to your project directory and run:
 ```
 npm i --save array-merge-by-id
 ```
+
+# API
+
+## Function by category
+
+Comparing, merging, linking elementsk of two arrays:
+
+* [`mergeA`](#mergeA) - merges new/changed elements into an existing array
+* [`compareA`](#compareA) - compares elements of two arrays and returns an object containing common elements and differences
+* [`linkA`](#linkA) - extends each child array element with a reference to it's parent element
+* [`eachPair`](#eachPair) - calls a callback method for each matched elements of provided arrays
+
+Searching & filtering:
+
+* [`filterByKeys`](#filterByKeys) - extract all the array elements which match the given key values (or are indicated by a comparer function)
+* [`findFirstById`](#findFirstById) - returns the first matched element of the given type
+* [`indexOf`](#indexOf) - returns index of first matching element in the given array
+* [`uniqueA`](#uniqueA) - copies unique elements from source to a new array, which is then returned
+
+Modifying, sorting, adding, removing elements of a single array:
+
+* [`concat`](#concat) - does an in-place concatination of elements of the source array at the end of target array
+* [`clear`](#clear) - removes all the elements of the given array
+* [`purgeA`](#purgeA) - removes elements indicated by a hit list from the provided array
+* [`overwrite`](#overwrite) - removes all the elements of target and replaces them with elements from source
+* [`sortOn`](#sortOn) - sorts the given array based on the given key name array (or comparer function)
+
+Other helper functions:
+
+* [`compileC`](#compileC) - compiles and returns a function which compares two data elements and detects which comes before which in an orderd list
+* [`stringifyIDs`](#stringifyIDs) - creates CSV containing values of all the keys ending with "ID". It's usefull for debugging
 
 ## Functions
 
