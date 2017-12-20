@@ -8,6 +8,7 @@ const _undef:any = void 0;
  * 
  * @param {Array} source array to be sorted
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
+ * @returns {Array} array passed via `source` param
  * 
  * @example
  * let source = [{cityID:2},{cityID:3},{cityID:1}];
@@ -36,7 +37,8 @@ const sortOn = (source:Array<Map>, key_columns:CompareBy):Array<Map> => {
 
 /**
  * Removes all the elements of the given array
- * @param {Array} target
+ * @param {Array} target array to be cleared
+ * @returns {Array} array passed via `target` param
  * 
  * @example
  * let source = [{cityID:2},{cityID:3},{cityID:1}];
@@ -58,6 +60,7 @@ function clear<T>(target:Array<T>):Array<T> {
  * @param {Array} target array to be overwritten
  * @param {Array} source array who's elements are to be places in `target`
  * @description removes all the elements of `target` and replaces them with elements from `source`
+ * @returns {Array} array passed via `target` param
  * 
  * @example
  * let target = [{cityID:100},{cityID:200}];
@@ -80,7 +83,7 @@ function overwrite(target:Array<any>, source:Array<any>):Array<any> {
  * Does an in-place concatination of elements of the `source` array at the end of `target` array
  * @param {Array} target array which should receive new elements
  * @param {Array} source array of elements which should be added at the end of the `target` array
- * @returns {Array} reference to the `target` array
+ * @returns {Array} array passed via `target` param
  * @example
  * 
  * let target = [{cityID:100},{cityID:200}];
