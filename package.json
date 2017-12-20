@@ -1,6 +1,6 @@
 {
   "name": "array-merge-by-id",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "array merging and comparing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,8 @@
     "test": "jest",
     "testw": "jest --watch",
     "tsc": "tsc --project tsconfig.doc.json",
-    "doc": "npm run clean && npm run tsc && jsdoc2md --template ./README.hbs ./dist/{array-compare,array-merge,array-link,array-filter,each-pair,array-purge,array-unique,array-index-of,array-find,stringify-ids,comparer-compiler,simple-methods}.js > README.md"
+    "doc": "npm run clean && npm run tsc && jsdoc2md --template ./README.hbs ./dist/{array-compare,array-merge,array-link,array-filter,each-pair,array-purge,array-unique,array-index-of,array-find,stringify-ids,comparer-compiler,simple-methods}.js > README.md",
+    "deploy2npm": "npm run doc && npm run prod && npm publish"
   },
   "repository": {
     "type": "git",
