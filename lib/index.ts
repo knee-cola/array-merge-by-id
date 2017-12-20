@@ -7,7 +7,7 @@ import stringifyIDs from './stringify-ids';
 import uniqueA from './array-unique';
 import compileC from './comparer-compiler';
 import eachPair from './each-pair';
-import { sortOn, clear, overwrite } from './simple-methods';
+import { sortOn, clear, overwrite, concat } from './simple-methods';
 import indexOf from './array-index-of';
 import findFirstById from './array-find';
 
@@ -22,5 +22,6 @@ export {
     uniqueA,
     compileC,
     eachPair,
-    sortOn, clear, overwrite
+    sortOn, clear, overwrite, concat,
+    stringifyIDs
 }
