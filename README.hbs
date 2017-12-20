@@ -42,7 +42,7 @@ npm i --save array-merge-by-id
 
 # API
 
-## Function by category
+## Functions by category
 
 Comparing, merging, linking elementsk of two arrays:
 
