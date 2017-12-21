@@ -43,6 +43,10 @@ Other helper functions:
 * [`compileC`](#compileC) - compiles and returns a function which compares two data elements and detects which comes before which in an orderd list
 * [`stringifyIDs`](#stringifyIDs) - creates CSV containing values of all the keys ending with "ID". It's usefull for debugging
 
+## TypeScript typings
+
+This lib was written in TypeScript, which is good news for people using TypeScript - all the typing information is included in the build (don't worry - it can still be used in vanilla JavaScript ... etc).
+
 ## Functions
 
 <dl>
