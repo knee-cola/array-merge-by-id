@@ -10,6 +10,10 @@ Simply open up a terminal, go to your project directory and run:
 npm i --save array-merge-by-id
 ```
 
+## Try it before you buy it
+
+You can try out all the examples (listed below) in your browser at [RunKit](https://npm.runkit.com/array-merge-by-id).
+
 # Functions by category
 
 Comparing, merging, linking elements of two arrays:
@@ -100,8 +104,8 @@ Compares elements of two arrays and returns an object containing common elements
 
 | Param | Type | Description |
 | --- | --- | --- |
-| leftA | <code>Array.&lt;T&gt;</code> | first array be compared |
-| rightA | <code>Array.&lt;K&gt;</code> | second array be compared |
+| leftA | <code>Array</code> | first array be compared |
+| rightA | <code>Array</code> | second array be compared |
 | key_columns | <code>CompareBy</code> | definition on how elements of two arrays should be compared (see [CompareBy](#compareby)) |
 | config | <code>ArrayDiffConfig</code> | (optional) additional config parameters (see [ArrayDiffConfig](#arraydiffconfig)) |
 
@@ -632,16 +636,16 @@ The following params are unique to this param type:
 {
     // an array of elements from left array (`leftA` param), which have not
     // been matched with any of the elements of the right array (`rightA` param)
-    leftDiff:Array<T>,
+    leftDiff:Array,
     // an array of elements from left array (`leftA` param),
     // which have been matched with at leas one element of the right array (`rightA` param)
-    leftCommon:Array<T>,
+    leftCommon:Array,
     // an array of elements from right array (`rightA` param), which have not
     // been matched with any of the elements of the left array (`leftA` param)
-    rightCommon:Array<K>,
+    rightCommon:Array,
     // an array of elements from right array (`rightA` param),
     // which have been matched with at leas one element of the left array (`leftA` param)
-    rightDiff:Array<K>
+    rightDiff:Array
 }
 ```
 
@@ -650,13 +654,13 @@ The following params are unique to this param type:
 ```javascript
 {
     // parent elements with no matched child elements
-    childless:Array<T>,
+    childless:Array,
     // parent elements with matching children
-    parents:Array<T>,
+    parents:Array,
     // child elements with matching parent
-    children:Array<K>,
+    children:Array,
     // child elements without a matching parent
-    orphans:Array<K>
+    orphans:Array
 }
 ```
 

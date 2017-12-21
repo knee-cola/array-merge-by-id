@@ -8,8 +8,8 @@ const _undef:any = void 0;
 /**
  * Compares elements of two arrays and returns an object containing common elements and differences (see [comparisson results object](#arraydiffresult)).
  * 
- * @param {Array<T>} leftA first array be compared 
- * @param {Array<K>} rightA second array be compared 
+ * @param {Array} leftA first array be compared 
+ * @param {Array} rightA second array be compared 
  * @param {CompareBy} key_columns definition on how elements of two arrays should be compared (see [CompareBy](#compareby))
  * @param {ArrayDiffConfig} config (optional) additional config parameters (see [ArrayDiffConfig](#arraydiffconfig))
  * @returns {ArrayDiffResult} comparisson results object (see [ArrayDiffResult](#arraydiffresult))
